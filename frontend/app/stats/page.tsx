@@ -5,10 +5,11 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Primitives';
 import { apiFetch } from '@/lib/api';
-import { Download } from 'lucide-react';
+import { Download, FileSignature } from 'lucide-react';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { pdf } from '@react-pdf/renderer';
 import { CertificateDocument } from '@/components/documents/CertificateDocument';
+import { SignedDeclarationDocument } from '@/components/documents/SignedDeclarationDocument';
 
 interface Certificate {
     id: number;
@@ -37,7 +38,26 @@ export default function StatsPage() {
         variants: [] as { name: string; value: number }[]
     });
 
+    const [agents, setAgents] = useState<{ id: number, username: string }[]>([]);
+    const [selectedAgentId, setSelectedAgentId] = useState<string>('');
+    const [isAdminOrBilling, setIsAdminOrBilling] = useState(false);
+
     useEffect(() => {
+        const userStr = localStorage.getItem('user');
+        if (userStr) {
+            try {
+                const u = JSON.parse(userStr);
+                if (u.role === 'ADMIN' || u.role === 'ROZLICZENIA') {
+                    setIsAdminOrBilling(true);
+                    apiFetch('/api/users/agents')
+                        .then(res => res.json())
+                        .then(data => {
+                            if (Array.isArray(data)) setAgents(data);
+                        })
+                        .catch(() => {});
+                }
+            } catch (e) {}
+        }
         fetchCertificates();
     }, []);
 
@@ -47,6 +67,7 @@ export default function StatsPage() {
             const params = new URLSearchParams();
             if (dateFrom) params.append('from', dateFrom);
             if (dateTo) params.append('to', dateTo);
+            if (selectedAgentId) params.append('agentId', selectedAgentId);
 
             const res = await apiFetch(`/api/certificates?${params.toString()}`);
             if (!res.ok) throw new Error('Failed to fetch');
@@ -111,7 +132,8 @@ export default function StatsPage() {
                 skladkaCalkowita: formData.skladka,
                 skladkaAssistance: 0,
                 skladkaOC: 0,
-                skladkaNNW: 0
+                skladkaNNW: 0,
+                latCalkowite: formData.periodDuration ? parseInt(formData.periodDuration) / 12 : 1
             };
 
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -128,6 +150,43 @@ export default function StatsPage() {
             a.href = url;
             const cleanNum = cert.numerCertyfikatu.replace(/\//g, '_');
             a.download = `Certyfikat_${cleanNum}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => window.URL.revokeObjectURL(url), 100);
+            document.body.removeChild(a);
+
+        } catch (e) {
+            console.error(e);
+            alert('Błąd generowania PDF');
+        }
+    };
+
+    const handleDownloadSignedDeclaration = async (cert: Certificate) => {
+        try {
+            if (!cert.parsedData) return;
+
+            const formData = cert.parsedData;
+            const result = {
+                skladkaCalkowita: formData.skladka,
+                skladkaAssistance: 0,
+                skladkaOC: 0,
+                skladkaNNW: 0,
+                latCalkowite: formData.periodDuration ? parseInt(formData.periodDuration) / 12 : 1
+            };
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const doc = <SignedDeclarationDocument
+                formData={formData}
+                result={result as any}
+                signatureUrl={cert.user?.signatureUrl}
+            />;
+
+            const blob = await pdf(doc).toBlob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const cleanNum = cert.numerCertyfikatu.replace(/\//g, '_');
+            a.download = `Podpisana_Deklaracja_${cleanNum}.pdf`;
             document.body.appendChild(a);
             a.click();
             setTimeout(() => window.URL.revokeObjectURL(url), 100);
@@ -268,12 +327,15 @@ export default function StatsPage() {
                                         <div className="text-sm text-gray-500">NIP: {cert.parsedData?.firmaNIP}</div>
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{cert.user?.username || '-'}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-500">{cert.parsedData?.opcjaUbez}</td>
+                                    <td className="px-6 py-4 text-sm text-gray-500">{cert.parsedData?.opcjaUbez?.toUpperCase()}</td>
                                     <td className="px-6 py-4 text-sm font-medium">{cert.parsedData?.skladka ? `${formatCurrency(cert.parsedData.skladka)} PLN` : '-'}</td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{new Date(cert.dataWystawienia).toLocaleDateString('pl-PL')}</td>
-                                    <td className="px-6 py-4 text-right">
-                                        <Button variant="ghost" size="sm" onClick={() => handleDownloadSingle(cert)} title="Pobierz PDF">
+                                    <td className="px-6 py-4 text-right flex justify-end gap-2">
+                                        <Button variant="ghost" size="sm" onClick={() => handleDownloadSingle(cert)} title="Pobierz PDF (Certyfikat)">
                                             <Download className="h-4 w-4 text-gray-600" />
+                                        </Button>
+                                        <Button variant="ghost" size="sm" onClick={() => handleDownloadSignedDeclaration(cert)} title="Pobierz Podpisaną Deklarację">
+                                            <FileSignature className="h-4 w-4 text-blue-600" />
                                         </Button>
                                     </td>
                                 </tr>

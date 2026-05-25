@@ -358,23 +358,34 @@ function UsersPage() {
         }
         const reader = new FileReader();
         reader.onloadend = async ()=>{
-            const base64Image = reader.result;
-            try {
-                const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["apiFetch"])(`/api/users/${userId}/signature`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        base64Image
-                    })
-                });
-                if (!res.ok) throw new Error('Nie udało się wgrać podpisu');
-                alert('Podpis wgrany pomyślnie!');
-                fetchUsers(); // Refresh list
-            } catch (err) {
-                alert(err.message);
-            }
+            const img = new window.Image();
+            img.onload = async ()=>{
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    ctx.drawImage(img, 0, 0);
+                    const base64Image = canvas.toDataURL('image/png');
+                    try {
+                        const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["apiFetch"])(`/api/users/${userId}/signature`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                base64Image
+                            })
+                        });
+                        if (!res.ok) throw new Error('Nie udało się wgrać podpisu');
+                        alert('Podpis wgrany pomyślnie!');
+                        fetchUsers(); // Refresh list
+                    } catch (err) {
+                        alert(err.message);
+                    }
+                }
+            };
+            img.src = reader.result;
         };
         reader.readAsDataURL(file);
     };
@@ -426,7 +437,7 @@ function UsersPage() {
         children: "Ładowanie..."
     }, void 0, false, {
         fileName: "[project]/frontend/app/admin/users/page.tsx",
-        lineNumber: 162,
+        lineNumber: 173,
         columnNumber: 25
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -441,19 +452,19 @@ function UsersPage() {
                             className: "h-8 w-8 text-primary"
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                            lineNumber: 168,
+                            lineNumber: 179,
                             columnNumber: 21
                         }, this),
                         "Zarządzanie Użytkownikami"
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                    lineNumber: 167,
+                    lineNumber: 178,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                lineNumber: 166,
+                lineNumber: 177,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -473,19 +484,19 @@ function UsersPage() {
                                                 className: "h-5 w-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 180,
+                                                lineNumber: 191,
                                                 columnNumber: 33
                                             }, this),
                                             "Dodaj Użytkownika"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                        lineNumber: 179,
+                                        lineNumber: 190,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 189,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -502,7 +513,7 @@ function UsersPage() {
                                                         children: "Nazwa użytkownika (Login)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 187,
+                                                        lineNumber: 198,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -512,13 +523,13 @@ function UsersPage() {
                                                         placeholder: "np. jkowalski"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 188,
+                                                        lineNumber: 199,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 186,
+                                                lineNumber: 197,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -529,7 +540,7 @@ function UsersPage() {
                                                         children: "Hasło"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 196,
+                                                        lineNumber: 207,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -539,13 +550,13 @@ function UsersPage() {
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 197,
+                                                        lineNumber: 208,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 195,
+                                                lineNumber: 206,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -556,7 +567,7 @@ function UsersPage() {
                                                         children: "Rola"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 205,
+                                                        lineNumber: 216,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -568,7 +579,7 @@ function UsersPage() {
                                                                 children: "Sprzedawca (USER)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                lineNumber: 207,
+                                                                lineNumber: 218,
                                                                 columnNumber: 41
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -576,7 +587,7 @@ function UsersPage() {
                                                                 children: "Administrator (ADMIN)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                lineNumber: 208,
+                                                                lineNumber: 219,
                                                                 columnNumber: 41
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -584,19 +595,19 @@ function UsersPage() {
                                                                 children: "Rozliczenia (ROZLICZENIA)"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                lineNumber: 209,
+                                                                lineNumber: 220,
                                                                 columnNumber: 41
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 206,
+                                                        lineNumber: 217,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 204,
+                                                lineNumber: 215,
                                                 columnNumber: 33
                                             }, this),
                                             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -606,20 +617,20 @@ function UsersPage() {
                                                         className: "h-4 w-4 shrink-0 mt-0.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 215,
+                                                        lineNumber: 226,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: error
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 216,
+                                                        lineNumber: 227,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 214,
+                                                lineNumber: 225,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -629,29 +640,29 @@ function UsersPage() {
                                                 children: isSubmitting ? 'Tworzenie...' : 'Utwórz konto'
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 220,
+                                                lineNumber: 231,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                        lineNumber: 185,
+                                        lineNumber: 196,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 195,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                            lineNumber: 177,
+                            lineNumber: 188,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                        lineNumber: 176,
+                        lineNumber: 187,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -667,12 +678,12 @@ function UsersPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                        lineNumber: 232,
+                                        lineNumber: 243,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 242,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -691,7 +702,7 @@ function UsersPage() {
                                                                     children: "ID"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                    lineNumber: 239,
+                                                                    lineNumber: 250,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -699,7 +710,7 @@ function UsersPage() {
                                                                     children: "Użytkownik"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                    lineNumber: 240,
+                                                                    lineNumber: 251,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -707,7 +718,7 @@ function UsersPage() {
                                                                     children: "Rola"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                    lineNumber: 241,
+                                                                    lineNumber: 252,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -715,7 +726,7 @@ function UsersPage() {
                                                                     children: "Podpis"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                    lineNumber: 242,
+                                                                    lineNumber: 253,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -723,7 +734,7 @@ function UsersPage() {
                                                                     children: "Utworzono"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                    lineNumber: 243,
+                                                                    lineNumber: 254,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -731,18 +742,18 @@ function UsersPage() {
                                                                     children: "Akcje"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                    lineNumber: 244,
+                                                                    lineNumber: 255,
                                                                     columnNumber: 45
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                            lineNumber: 238,
+                                                            lineNumber: 249,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 237,
+                                                        lineNumber: 248,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -757,7 +768,7 @@ function UsersPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                        lineNumber: 250,
+                                                                        lineNumber: 261,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -765,7 +776,7 @@ function UsersPage() {
                                                                         children: u.username
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                        lineNumber: 251,
+                                                                        lineNumber: 262,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -775,12 +786,12 @@ function UsersPage() {
                                                                             children: u.role
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                            lineNumber: 253,
+                                                                            lineNumber: 264,
                                                                             columnNumber: 53
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                        lineNumber: 252,
+                                                                        lineNumber: 263,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -791,19 +802,19 @@ function UsersPage() {
                                                                             className: "h-10 object-contain rounded border bg-white p-1"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                            lineNumber: 262,
+                                                                            lineNumber: 273,
                                                                             columnNumber: 57
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             className: "text-gray-400 text-xs italic",
                                                                             children: "Brak"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                            lineNumber: 268,
+                                                                            lineNumber: 279,
                                                                             columnNumber: 57
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                        lineNumber: 260,
+                                                                        lineNumber: 271,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -811,7 +822,7 @@ function UsersPage() {
                                                                         children: new Date(u.createdAt).toLocaleDateString()
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                        lineNumber: 271,
+                                                                        lineNumber: 282,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -825,7 +836,7 @@ function UsersPage() {
                                                                                         className: "w-4 h-4"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                                        lineNumber: 279,
+                                                                                        lineNumber: 290,
                                                                                         columnNumber: 57
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -835,13 +846,13 @@ function UsersPage() {
                                                                                         onChange: (e)=>handleFileUpload(e, u.id)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                                        lineNumber: 280,
+                                                                                        lineNumber: 291,
                                                                                         columnNumber: 57
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                                lineNumber: 275,
+                                                                                lineNumber: 286,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -855,12 +866,12 @@ function UsersPage() {
                                                                                     className: "w-4 h-4"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                                    lineNumber: 293,
+                                                                                    lineNumber: 304,
                                                                                     columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                                lineNumber: 288,
+                                                                                lineNumber: 299,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -874,35 +885,35 @@ function UsersPage() {
                                                                                     className: "w-4 h-4"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                                    lineNumber: 301,
+                                                                                    lineNumber: 312,
                                                                                     columnNumber: 57
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                                lineNumber: 296,
+                                                                                lineNumber: 307,
                                                                                 columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                        lineNumber: 274,
+                                                                        lineNumber: 285,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, u.id, true, {
                                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                                lineNumber: 249,
+                                                                lineNumber: 260,
                                                                 columnNumber: 45
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                        lineNumber: 247,
+                                                        lineNumber: 258,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 236,
+                                                lineNumber: 247,
                                                 columnNumber: 33
                                             }, this),
                                             users.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -910,35 +921,35 @@ function UsersPage() {
                                                 children: "Brak innych użytkowników."
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                                lineNumber: 309,
+                                                lineNumber: 320,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                        lineNumber: 235,
+                                        lineNumber: 246,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 245,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                            lineNumber: 230,
+                            lineNumber: 241,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                        lineNumber: 229,
+                        lineNumber: 240,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                lineNumber: 173,
+                lineNumber: 184,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Modal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Modal"], {
@@ -960,7 +971,7 @@ function UsersPage() {
                             children: "Anuluj"
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                            lineNumber: 328,
+                            lineNumber: 339,
                             columnNumber: 25
                         }, void 0),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -969,7 +980,7 @@ function UsersPage() {
                             children: "Usuń bezpowrotnie"
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                            lineNumber: 329,
+                            lineNumber: 340,
                             columnNumber: 25
                         }, void 0)
                     ]
@@ -980,14 +991,14 @@ function UsersPage() {
                         children: userToDelete?.username
                     }, void 0, false, {
                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                        lineNumber: 333,
+                        lineNumber: 344,
                         columnNumber: 56
                     }, this),
                     "? Tej operacji nie można cofnąć."
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                lineNumber: 321,
+                lineNumber: 332,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Modal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Modal"], {
@@ -1011,7 +1022,7 @@ function UsersPage() {
                             children: "Anuluj"
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                            lineNumber: 344,
+                            lineNumber: 355,
                             columnNumber: 25
                         }, void 0),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1019,7 +1030,7 @@ function UsersPage() {
                             children: "Zapisz hasło"
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/users/page.tsx",
-                            lineNumber: 345,
+                            lineNumber: 356,
                             columnNumber: 25
                         }, void 0)
                     ]
@@ -1036,7 +1047,7 @@ function UsersPage() {
                                 children: "Nowe hasło"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                lineNumber: 351,
+                                lineNumber: 362,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1047,29 +1058,29 @@ function UsersPage() {
                                 required: true
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                                lineNumber: 352,
+                                lineNumber: 363,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/app/admin/users/page.tsx",
-                        lineNumber: 350,
+                        lineNumber: 361,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/frontend/app/admin/users/page.tsx",
-                    lineNumber: 349,
+                    lineNumber: 360,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/app/admin/users/page.tsx",
-                lineNumber: 337,
+                lineNumber: 348,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/app/admin/users/page.tsx",
-        lineNumber: 165,
+        lineNumber: 176,
         columnNumber: 9
     }, this);
 }

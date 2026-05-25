@@ -287,6 +287,8 @@ function ReportsPage() {
     const dateToRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const [confirmModalOpen, setConfirmModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [pendingSftpIds, setPendingSftpIds] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [agents, setAgents] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [selectedAgentId, setSelectedAgentId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const user = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getUser"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const currentUser = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getUser"])();
@@ -297,6 +299,9 @@ function ReportsPage() {
             window.location.href = '/stats';
             return;
         }
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["apiFetch"])('/api/users/agents').then((res)=>res.json()).then((data)=>{
+            if (Array.isArray(data)) setAgents(data);
+        }).catch(()=>{});
         fetchCertificates();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -306,6 +311,7 @@ function ReportsPage() {
             const params = new URLSearchParams();
             if (dateFrom) params.append('from', dateFrom);
             if (dateTo) params.append('to', dateTo);
+            if (selectedAgentId) params.append('agentId', selectedAgentId);
             const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["apiFetch"])(`/api/certificates?${params.toString()}`);
             if (!res.ok) throw new Error('Failed to fetch');
             const data = await res.json();
@@ -407,7 +413,7 @@ function ReportsPage() {
                 children: "Raporty Systemowe"
             }, void 0, false, {
                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                lineNumber: 142,
+                lineNumber: 156,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -435,7 +441,7 @@ function ReportsPage() {
                                         className: "max-w-[200px]"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 149,
+                                        lineNumber: 163,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -446,7 +452,34 @@ function ReportsPage() {
                                         className: "max-w-[200px]"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 162,
+                                        lineNumber: 176,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                        className: "border rounded-md px-3 py-2 text-sm max-w-[200px]",
+                                        value: selectedAgentId,
+                                        onChange: (e)=>setSelectedAgentId(e.target.value),
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: "",
+                                                children: "Wszyscy sprzedawcy"
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/app/admin/reports/page.tsx",
+                                                lineNumber: 188,
+                                                columnNumber: 33
+                                            }, this),
+                                            agents.map((a)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                    value: a.id,
+                                                    children: a.username
+                                                }, a.id, false, {
+                                                    fileName: "[project]/frontend/app/admin/reports/page.tsx",
+                                                    lineNumber: 190,
+                                                    columnNumber: 37
+                                                }, this))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/app/admin/reports/page.tsx",
+                                        lineNumber: 183,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -455,13 +488,13 @@ function ReportsPage() {
                                         children: "Filtruj"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 193,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                lineNumber: 148,
+                                lineNumber: 162,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -475,7 +508,7 @@ function ReportsPage() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 177,
+                                            lineNumber: 201,
                                             columnNumber: 33
                                         }, this),
                                         "Wyślij zaznaczone na SFTP (",
@@ -484,28 +517,28 @@ function ReportsPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 196,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                lineNumber: 171,
+                                lineNumber: 195,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                        lineNumber: 147,
+                        lineNumber: 161,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                    lineNumber: 146,
+                    lineNumber: 160,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                lineNumber: 145,
+                lineNumber: 159,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -525,12 +558,12 @@ function ReportsPage() {
                                             checked: selectedIds.length === certificates.length && certificates.length > 0
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 191,
+                                            lineNumber: 215,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 190,
+                                        lineNumber: 214,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -538,7 +571,7 @@ function ReportsPage() {
                                         children: "Nr Certyfikatu"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 217,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -546,7 +579,15 @@ function ReportsPage() {
                                         children: "Klient"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 194,
+                                        lineNumber: 218,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                        children: "Sprzedawca"
+                                    }, void 0, false, {
+                                        fileName: "[project]/frontend/app/admin/reports/page.tsx",
+                                        lineNumber: 219,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -554,7 +595,7 @@ function ReportsPage() {
                                         children: "Wariant"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 195,
+                                        lineNumber: 220,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -562,7 +603,7 @@ function ReportsPage() {
                                         children: "Data Wystawienia"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 196,
+                                        lineNumber: 221,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -570,7 +611,7 @@ function ReportsPage() {
                                         children: "Wysłane"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 197,
+                                        lineNumber: 222,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -578,49 +619,49 @@ function ReportsPage() {
                                         children: "Akcje"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                        lineNumber: 198,
+                                        lineNumber: 223,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                lineNumber: 189,
+                                lineNumber: 213,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                            lineNumber: 188,
+                            lineNumber: 212,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                             className: "bg-white divide-y divide-gray-200",
                             children: loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                    colSpan: 6,
+                                    colSpan: 8,
                                     className: "px-6 py-4 text-center",
                                     children: "Ładowanie..."
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 228,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                lineNumber: 203,
+                                lineNumber: 228,
                                 columnNumber: 29
                             }, this) : certificates.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                    colSpan: 6,
+                                    colSpan: 8,
                                     className: "px-6 py-4 text-center",
                                     children: "Brak polis w bazie"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 230,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                lineNumber: 205,
+                                lineNumber: 230,
                                 columnNumber: 29
                             }, this) : certificates.map((cert)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                     className: "hover:bg-gray-50",
@@ -633,12 +674,12 @@ function ReportsPage() {
                                                 onChange: ()=>toggleSelect(cert.id)
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                lineNumber: 210,
+                                                lineNumber: 235,
                                                 columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 209,
+                                            lineNumber: 234,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -646,7 +687,7 @@ function ReportsPage() {
                                             children: cert.numerCertyfikatu
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 241,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -657,7 +698,7 @@ function ReportsPage() {
                                                     children: cert.parsedData?.firmaName
                                                 }, void 0, false, {
                                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                    lineNumber: 218,
+                                                    lineNumber: 243,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -668,13 +709,21 @@ function ReportsPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                    lineNumber: 219,
+                                                    lineNumber: 244,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 217,
+                                            lineNumber: 242,
+                                            columnNumber: 37
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "px-6 py-4 text-sm text-gray-500",
+                                            children: cert.user?.username || '-'
+                                        }, void 0, false, {
+                                            fileName: "[project]/frontend/app/admin/reports/page.tsx",
+                                            lineNumber: 246,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -682,7 +731,7 @@ function ReportsPage() {
                                             children: cert.parsedData?.opcjaUbez
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 221,
+                                            lineNumber: 247,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -690,7 +739,7 @@ function ReportsPage() {
                                             children: new Date(cert.dataWystawienia).toLocaleDateString('pl-PL')
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 222,
+                                            lineNumber: 248,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -702,14 +751,14 @@ function ReportsPage() {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                        lineNumber: 226,
+                                                        lineNumber: 252,
                                                         columnNumber: 49
                                                     }, this),
                                                     " Przesłano"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                lineNumber: 225,
+                                                lineNumber: 251,
                                                 columnNumber: 45
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "inline-flex items-center gap-1 text-gray-500 bg-gray-50 px-2 py-1 rounded-full text-xs font-medium",
@@ -718,19 +767,19 @@ function ReportsPage() {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                        lineNumber: 230,
+                                                        lineNumber: 256,
                                                         columnNumber: 49
                                                     }, this),
                                                     " Oczekuje"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                lineNumber: 229,
+                                                lineNumber: 255,
                                                 columnNumber: 45
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 223,
+                                            lineNumber: 249,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -745,12 +794,12 @@ function ReportsPage() {
                                                         className: "h-5 w-5 text-blue-600"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                        lineNumber: 236,
+                                                        lineNumber: 262,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                    lineNumber: 235,
+                                                    lineNumber: 261,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -764,40 +813,40 @@ function ReportsPage() {
                                                         className: `h-5 w-5 ${cert.xmlWyslany ? 'text-gray-400' : 'text-green-600'}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                        lineNumber: 239,
+                                                        lineNumber: 265,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                                    lineNumber: 238,
+                                                    lineNumber: 264,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                            lineNumber: 234,
+                                            lineNumber: 260,
                                             columnNumber: 37
                                         }, this)
                                     ]
                                 }, cert.id, true, {
                                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 233,
                                     columnNumber: 33
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                            lineNumber: 201,
+                            lineNumber: 226,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                    lineNumber: 187,
+                    lineNumber: 211,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                lineNumber: 186,
+                lineNumber: 210,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Modal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Modal"], {
@@ -813,7 +862,7 @@ function ReportsPage() {
                             children: "Anuluj"
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                            lineNumber: 257,
+                            lineNumber: 283,
                             columnNumber: 25
                         }, void 0),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -822,7 +871,7 @@ function ReportsPage() {
                             children: "Wyślij ponownie"
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                            lineNumber: 258,
+                            lineNumber: 284,
                             columnNumber: 25
                         }, void 0)
                     ]
@@ -830,13 +879,13 @@ function ReportsPage() {
                 children: "Te pliki zostały już wysłane na serwer Towarzystwa Ubezpieczeniowego. Czy na pewno chcesz je wysłać ponownie?"
             }, void 0, false, {
                 fileName: "[project]/frontend/app/admin/reports/page.tsx",
-                lineNumber: 250,
+                lineNumber: 276,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/app/admin/reports/page.tsx",
-        lineNumber: 141,
+        lineNumber: 155,
         columnNumber: 9
     }, this);
 }

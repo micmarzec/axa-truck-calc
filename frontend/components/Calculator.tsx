@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { apiFetch } from "@/lib/api"
+import { apiFetch, getUser } from "@/lib/api"
 export type PackageType = 'Basic' | 'Top' | 'Best+';
 
 export interface CalculationResult {
@@ -29,6 +29,7 @@ import { Calculator, FileText, Send, CheckCircle, AlertCircle } from "lucide-rea
 import { pdf } from "@react-pdf/renderer"
 import { DeclarationDocument } from "./documents/DeclarationDocument"
 import { CertificateDocument } from "./documents/CertificateDocument"
+import { SignedDeclarationDocument } from "./documents/SignedDeclarationDocument"
 import { Modal } from "./ui/Modal"
 
 const validateNIP = (nip: string) => {
@@ -148,6 +149,14 @@ export default function CalculatorComponent() {
     const [isGenerating, setIsGenerating] = useState(false)
     const [isSending, setIsSending] = useState(false)
     const [issuedNumber, setIssuedNumber] = useState<string | null>(null)
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    useEffect(() => {
+        const u = getUser();
+        if (u && (u.role === 'ADMIN' || u.role === 'ROZLICZENIA')) {
+            setIsAdmin(true);
+        }
+    }, []);
 
     // Modal State
     const [modal, setModal] = useState<{
@@ -337,12 +346,12 @@ export default function CalculatorComponent() {
         return missing;
     }
 
-    const handleGenerateDocument = async (type: 'deklaracja' | 'certyfikat') => {
+    const handleGenerateDocument = async (type: 'deklaracja' | 'certyfikat' | 'podpisana-deklaracja') => {
         // Collect all errors (both field and calc) to show one comprehensive list
         let allErrors: string[] = [];
 
         // 1. Check strict fields
-        const missingFields = validateFields(type, false); // pass false to not alert inside helper
+        const missingFields = validateFields(type === 'podpisana-deklaracja' ? 'certyfikat' : type, false); // pass false to not alert inside helper
         if (missingFields.length > 0) {
             allErrors = [...missingFields];
         }
@@ -367,9 +376,12 @@ export default function CalculatorComponent() {
 
         try {
             // Use @react-pdf/renderer
+            const u = getUser();
             const MyDocument = type === 'deklaracja'
                 ? <DeclarationDocument formData={formData} result={result} />
-                : <CertificateDocument formData={formData} result={result} />;
+                : type === 'certyfikat'
+                ? <CertificateDocument formData={formData} result={result} />
+                : <SignedDeclarationDocument formData={formData} result={result} signatureUrl={u?.signatureUrl} />;
 
             const blob = await pdf(MyDocument).toBlob();
             const url = URL.createObjectURL(blob);
@@ -712,65 +724,80 @@ export default function CalculatorComponent() {
                                     </div>
                                 </div>
 
-                                {/* Test Data Section */}
-                                <div className="mt-6 border border-gray-200 rounded-md overflow-hidden">
-                                    <div className="bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Dane testowe
-                                    </div>
-                                    <div className="p-3 text-xs text-gray-500 space-y-1 bg-white">
-                                        {result.latT6Z > 0 && (
-                                            <div className="flex justify-between border-b border-gray-100 pb-1 last:border-0 last:pb-0">
-                                                <span>Taryfa T6Z ({formatDuration(result.latT6Z)}):</span>
-                                                <span>{formatCurrency(result.skladkaT6Z)} PLN</span>
+                                {isAdmin && (
+                                    <div className="mt-6 border border-gray-200 rounded-md overflow-hidden">
+                                        <div className="bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Dane testowe
+                                        </div>
+                                        <div className="p-3 text-xs text-gray-500 space-y-1 bg-white">
+                                            {result.latT6Z > 0 && (
+                                                <div className="flex justify-between border-b border-gray-100 pb-1 last:border-0 last:pb-0">
+                                                    <span>Taryfa T6Z ({formatDuration(result.latT6Z)}):</span>
+                                                    <span>{formatCurrency(result.skladkaT6Z)} PLN</span>
+                                                </div>
+                                            )}
+                                            {result.latT10Z > 0 && (
+                                                <div className="flex justify-between border-b border-gray-100 pb-1 last:border-0 last:pb-0">
+                                                    <span>Taryfa T10Z ({formatDuration(result.latT10Z)}):</span>
+                                                    <span>{formatCurrency(result.skladkaT10Z)} PLN</span>
+                                                </div>
+                                            )}
+                                            <div className="flex justify-between pt-1 font-medium">
+                                                <span>Wariant: {formData.opcjaUbez}</span>
                                             </div>
-                                        )}
-                                        {result.latT10Z > 0 && (
-                                            <div className="flex justify-between border-b border-gray-100 pb-1 last:border-0 last:pb-0">
-                                                <span>Taryfa T10Z ({formatDuration(result.latT10Z)}):</span>
-                                                <span>{formatCurrency(result.skladkaT10Z)} PLN</span>
-                                            </div>
-                                        )}
-                                        <div className="flex justify-between pt-1 font-medium">
-                                            <span>Wariant: {formData.opcjaUbez}</span>
                                         </div>
                                     </div>
-                                </div>
+                                )}
 
                                 <div className="grid grid-cols-1 gap-2 pt-4">
                                     <div className="grid grid-cols-2 gap-2">
                                         <Button variant="outline" onClick={() => handleGenerateDocument('deklaracja')} disabled={isGenerating}>
                                             {isGenerating ? 'Generowanie...' : 'Deklaracja (PDF)'}
                                         </Button>
-                                        <Button className="bg-green-600 hover:bg-green-700 text-white" onClick={handleIssueCertificate} disabled={isGenerating}>
-                                            {isGenerating ? 'Wystawianie...' : 'Wystaw Certyfikat'}
+                                        <Button className="bg-green-600 hover:bg-green-700 text-white" onClick={handleIssueCertificate} disabled={isGenerating || !!issuedNumber}>
+                                            {isGenerating ? 'Wystawianie...' : (issuedNumber ? 'Wystawiono Certyfikat' : 'Wystaw Certyfikat')}
                                         </Button>
                                     </div>
-                                    <div className="flex gap-2">
-                                        <Button
-                                            variant="outline"
-                                            className="w-1/2"
-                                            onClick={handleDownloadXML}
-                                            disabled={isSending || !issuedNumber}
-                                            title={!issuedNumber ? "Musisz najpierw wystawić certyfikat" : ""}
-                                        >
-                                            Pobierz XML
-                                        </Button>
-                                        <Button
-                                            variant="secondary"
-                                            className="w-1/2 gap-2"
-                                            onClick={handleSendXML}
-                                            disabled={isSending || !issuedNumber}
-                                            title={!issuedNumber ? "Musisz najpierw wystawić certyfikat" : ""}
-                                        >
-                                            <Send className="h-4 w-4" /> Wyślij (SFTP)
-                                        </Button>
-                                    </div>
-                                    {!issuedNumber && (
-                                        <p className="text-xs text-red-500 text-center mt-1">
-                                            Aby pobrać/wysłać XML, najpierw wystaw certyfikat.
-                                        </p>
+                                    {issuedNumber && (
+                                        <div className="grid grid-cols-2 gap-2">
+                                            <Button variant="outline" onClick={() => handleGenerateDocument('podpisana-deklaracja')} disabled={isGenerating}>
+                                                Podpisana Deklaracja
+                                            </Button>
+                                            <Button variant="outline" onClick={() => handleGenerateDocument('certyfikat')} disabled={isGenerating}>
+                                                Pobierz Certyfikat
+                                            </Button>
+                                        </div>
                                     )}
-                                    <p className="text-xs text-muted-foreground text-center mt-2">Dla PDF używamy nowej technologii wektorowej.</p>
+                                    {isAdmin && (
+                                        <>
+                                            <div className="flex gap-2">
+                                                <Button
+                                                    variant="outline"
+                                                    className="w-1/2"
+                                                    onClick={handleDownloadXML}
+                                                    disabled={isSending || !issuedNumber}
+                                                    title={!issuedNumber ? "Musisz najpierw wystawić certyfikat" : ""}
+                                                >
+                                                    Pobierz XML
+                                                </Button>
+                                                <Button
+                                                    variant="secondary"
+                                                    className="w-1/2 gap-2"
+                                                    onClick={handleSendXML}
+                                                    disabled={isSending || !issuedNumber}
+                                                    title={!issuedNumber ? "Musisz najpierw wystawić certyfikat" : ""}
+                                                >
+                                                    <Send className="h-4 w-4" /> Wyślij (SFTP)
+                                                </Button>
+                                            </div>
+                                            {!issuedNumber && (
+                                                <p className="text-xs text-red-500 text-center mt-1">
+                                                    Aby pobrać/wysłać XML, najpierw wystaw certyfikat.
+                                                </p>
+                                            )}
+                                            <p className="text-xs text-muted-foreground text-center mt-2">Dla PDF używamy nowej technologii wektorowej.</p>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         )}

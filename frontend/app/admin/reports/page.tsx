@@ -5,8 +5,10 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardContent } from '@/components/ui/Primitives';
 import { apiFetch, getUser } from '@/lib/api';
-import { FileDown, FileText, Send, CheckCircle2, XCircle } from 'lucide-react';
+import { FileDown, FileText, Send, CheckCircle2, XCircle, FileSignature } from 'lucide-react';
 import { Modal } from '@/components/ui/Modal';
+import { pdf } from '@react-pdf/renderer';
+import { SignedDeclarationDocument } from '@/components/documents/SignedDeclarationDocument';
 
 interface Certificate {
     id: number;
@@ -135,6 +137,43 @@ export default function ReportsPage() {
         }
     };
 
+    const handleDownloadSignedDeclaration = async (cert: Certificate) => {
+        try {
+            if (!cert.parsedData) return;
+
+            const formData = cert.parsedData;
+            const result = {
+                skladkaCalkowita: formData.skladka,
+                skladkaAssistance: 0,
+                skladkaOC: 0,
+                skladkaNNW: 0,
+                latCalkowite: formData.periodDuration ? parseInt(formData.periodDuration) / 12 : 1
+            };
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const doc = <SignedDeclarationDocument
+                formData={formData}
+                result={result as any}
+                signatureUrl={cert.user?.signatureUrl}
+            />;
+
+            const blob = await pdf(doc).toBlob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const cleanNum = cert.numerCertyfikatu.replace(/\//g, '_');
+            a.download = `Podpisana_Deklaracja_${cleanNum}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => window.URL.revokeObjectURL(url), 100);
+            document.body.removeChild(a);
+
+        } catch (e) {
+            console.error(e);
+            alert('Błąd generowania PDF');
+        }
+    };
+
     const toggleSelect = (id: number) => {
         if (selectedIds.includes(id)) {
             setSelectedIds(prev => prev.filter(i => i !== id));
@@ -244,7 +283,7 @@ export default function ReportsPage() {
                                         <div className="text-sm text-gray-500">NIP: {cert.parsedData?.firmaNIP}</div>
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{cert.user?.username || '-'}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-500">{cert.parsedData?.opcjaUbez}</td>
+                                    <td className="px-6 py-4 text-sm text-gray-500">{cert.parsedData?.opcjaUbez?.toUpperCase()}</td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{new Date(cert.dataWystawienia).toLocaleDateString('pl-PL')}</td>
                                     <td className="px-6 py-4 text-sm">
                                         {cert.xmlWyslany ? (
@@ -258,6 +297,9 @@ export default function ReportsPage() {
                                         )}
                                     </td>
                                     <td className="px-6 py-4 text-right flex justify-end gap-1">
+                                        <Button variant="ghost" size="sm" onClick={() => handleDownloadSignedDeclaration(cert)} title="Pobierz Podpisaną Deklarację">
+                                            <FileSignature className="h-5 w-5 text-purple-600" />
+                                        </Button>
                                         <Button variant="ghost" size="sm" onClick={() => handleDownloadSingleXML(cert)} title="Pobierz XML lokalnie">
                                             <FileText className="h-5 w-5 text-blue-600" />
                                         </Button>

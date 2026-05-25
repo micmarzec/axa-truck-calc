@@ -78,7 +78,10 @@ app.get('/api/users/agents', authenticateToken, async (req, res) => {
         const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
         if (!isAdminOrBilling) return res.status(403).json({ error: 'Brak dostępu' });
         
-        const users = await prisma.user.findMany({ select: { id: true, username: true } });
+        const users = await prisma.user.findMany({ 
+            where: { certificates: { some: {} } },
+            select: { id: true, username: true } 
+        });
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch agents' });
@@ -239,11 +242,27 @@ app.get('/api/certificates', authenticateToken, async (req, res) => {
     try {
         const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
         const agentId = req.query.agentId ? parseInt(req.query.agentId as string, 10) : undefined;
+        const fromDateStr = req.query.from as string;
+        const toDateStr = req.query.to as string;
         
         const whereClause: any = isAdminOrBilling ? {} : { userId: req.user?.id };
         
         if (isAdminOrBilling && agentId) {
             whereClause.userId = agentId;
+        }
+
+        if (fromDateStr || toDateStr) {
+            whereClause.dataWystawienia = {};
+            if (fromDateStr) {
+                const fd = new Date(fromDateStr);
+                fd.setHours(0, 0, 0, 0);
+                whereClause.dataWystawienia.gte = fd;
+            }
+            if (toDateStr) {
+                const td = new Date(toDateStr);
+                td.setHours(23, 59, 59, 999);
+                whereClause.dataWystawienia.lte = td;
+            }
         }
 
         const certificates = await prisma.certificate.findMany({

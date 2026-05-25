@@ -141,9 +141,9 @@ export const CertificateDocument: React.FC<CertificateProps> = ({ formData, resu
         return val.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     };
 
-    let opcjaText = val(formData.opcjaUbez);
+    let opcjaText = val(formData.opcjaUbez?.toUpperCase());
     if (result.latT6Z > 0 && result.latT10Z > 0 && formData.opcjaUbez) {
-        opcjaText = `${formData.opcjaUbez} (0-7), ${formData.opcjaUbez} (7-10)`;
+        opcjaText = `${formData.opcjaUbez?.toUpperCase()} (0-7), ${formData.opcjaUbez?.toUpperCase()} (7-10)`;
     }
 
     return (

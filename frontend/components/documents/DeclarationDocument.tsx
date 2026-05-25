@@ -14,8 +14,8 @@ Font.register({
 
 const styles = StyleSheet.create({
     page: {
-        padding: 30,
-        paddingTop: 40,
+        padding: 20,
+        paddingTop: 15,
         fontSize: 9,
         fontFamily: 'Arial',
         flexDirection: 'column',
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        marginBottom: 20,
+        marginBottom: 5,
     },
     logoImage: {
         width: 60,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 15,
+        marginTop: 5,
     },
     titleMain: {
         fontWeight: 'bold',
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 
     // Main Content Sections
     sectionContainer: {
-        marginBottom: 5,
+        marginBottom: 2,
     },
     sectionHeaderBox: {
         borderWidth: 1,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     },
     legalPara: {
         fontSize: 8,
-        marginBottom: 6,
+        marginBottom: 2,
         textAlign: 'justify',
     },
     bold: {
@@ -159,10 +159,16 @@ const styles = StyleSheet.create({
     },
 
     footerSignature: {
-        marginTop: 30,
+        marginTop: 10,
         alignSelf: 'flex-end',
         marginRight: 20,
         alignItems: 'flex-end',
+    },
+    axaClause: {
+        fontSize: 7,
+        textAlign: 'center',
+        marginTop: 25,
+        lineHeight: 1.2
     }
 });
 
@@ -287,7 +293,7 @@ export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, resu
                     <View style={styles.sectionContentBox}>
                         <View style={styles.fieldRow}>
                             <Text style={styles.fieldLabel}>Opcja ubezpieczenia:</Text>
-                            <Text style={styles.fieldValue}>{formData.opcjaUbez || "BASIC / TOP / BEST+"}</Text>
+                            <Text style={styles.fieldValue}>{formData.opcjaUbez?.toUpperCase() || "BASIC / TOP / BEST+"}</Text>
                         </View>
                         <View style={styles.fieldRow}>
                             <Text style={styles.fieldLabel}>Wariant (ZESTAW):</Text>
@@ -346,6 +352,14 @@ export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, resu
                 {/* Footer Signature */}
                 <View style={styles.footerSignature}>
                     <Text>Podpis ......................................................</Text>
+                </View>
+
+                {/* AXA Clause */}
+                <View style={styles.axaClause}>
+                    <Text>Marka AXA Assistance należy do Grupy AXA Assistance, której członkiem jest Inter Partner Assistance S.A. z siedzibą w Brukseli</Text>
+                    <Text>działającą w Polsce poprzez Inter Partner Assistance S.A. Oddział w Polsce,</Text>
+                    <Text>ul. Giełdowa 1, 01-211 Warszawa, o numerze NIP 1080006955, zarejestrowany w rejestrze przedsiębiorców prowadzonym przez Sąd</Text>
+                    <Text>Rejonowy dla m. st. Warszawy, XIII Wydział Gospodarczy Krajowego Rejestru Sądowego pod numerem KRS 0000320749.</Text>
                 </View>
 
             </Page>

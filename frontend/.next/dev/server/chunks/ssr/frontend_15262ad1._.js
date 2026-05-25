@@ -1837,12 +1837,10 @@ const CertificateDocument = ({ formData, result, issuedNumber, signatureUrl })=>
                         },
                         children: [
                             signatureUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f40$react$2d$pdf$2f$renderer__$5b$external$5d$__$2840$react$2d$pdf$2f$renderer$2c$__esm_import$2c$__$5b$project$5d2f$node_modules$2f40$react$2d$pdf$2f$renderer$29$__["Image"], {
-                                src: ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : `http://localhost:4000${signatureUrl}`,
+                                src: `${("TURBOPACK compile-time value", "http://localhost:4000") || 'http://localhost:4000'}${signatureUrl}`,
                                 style: {
-                                    height: 35,
-                                    width: 100,
-                                    objectFit: 'contain',
-                                    marginBottom: 2
+                                    height: 60,
+                                    marginBottom: 5
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/documents/CertificateDocument.tsx",
@@ -2214,6 +2212,13 @@ function CalculatorComponent() {
     const [isGenerating, setIsGenerating] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isSending, setIsSending] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [issuedNumber, setIssuedNumber] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [isAdmin, setIsAdmin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const u = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getUser"])();
+        if (u && (u.role === 'ADMIN' || u.role === 'ROZLICZENIA')) {
+            setIsAdmin(true);
+        }
+    }, []);
     // Modal State
     const [modal, setModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         isOpen: false,
@@ -2386,12 +2391,12 @@ function CalculatorComponent() {
                         children: m
                     }, i, false, {
                         fileName: "[project]/frontend/components/Calculator.tsx",
-                        lineNumber: 332,
+                        lineNumber: 340,
                         columnNumber: 44
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 331,
+                lineNumber: 339,
                 columnNumber: 17
             }, this), 'danger');
         }
@@ -2418,12 +2423,12 @@ function CalculatorComponent() {
                         children: e
                     }, i, false, {
                         fileName: "[project]/frontend/components/Calculator.tsx",
-                        lineNumber: 359,
+                        lineNumber: 367,
                         columnNumber: 46
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 358,
+                lineNumber: 366,
                 columnNumber: 17
             }, this), 'danger');
             return;
@@ -2436,14 +2441,14 @@ function CalculatorComponent() {
                 result: result
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 371,
+                lineNumber: 379,
                 columnNumber: 19
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$documents$2f$CertificateDocument$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CertificateDocument"], {
                 formData: formData,
                 result: result
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 372,
+                lineNumber: 380,
                 columnNumber: 19
             }, this);
             const blob = await (0, __TURBOPACK__imported__module__$5b$externals$5d2f40$react$2d$pdf$2f$renderer__$5b$external$5d$__$2840$react$2d$pdf$2f$renderer$2c$__esm_import$2c$__$5b$project$5d2f$node_modules$2f40$react$2d$pdf$2f$renderer$29$__["pdf"])(MyDocument).toBlob();
@@ -2478,12 +2483,12 @@ function CalculatorComponent() {
                         children: e
                     }, i, false, {
                         fileName: "[project]/frontend/components/Calculator.tsx",
-                        lineNumber: 405,
+                        lineNumber: 413,
                         columnNumber: 46
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 404,
+                lineNumber: 412,
                 columnNumber: 17
             }, this), 'danger');
             return;
@@ -2587,7 +2592,7 @@ function CalculatorComponent() {
                 signatureUrl: signatureUrl
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 499,
+                lineNumber: 507,
                 columnNumber: 32
             }, this);
             const blob = await (0, __TURBOPACK__imported__module__$5b$externals$5d2f40$react$2d$pdf$2f$renderer__$5b$external$5d$__$2840$react$2d$pdf$2f$renderer$2c$__esm_import$2c$__$5b$project$5d2f$node_modules$2f40$react$2d$pdf$2f$renderer$29$__["pdf"])(MyDocument).toBlob();
@@ -2624,12 +2629,12 @@ function CalculatorComponent() {
                         children: e
                     }, i, false, {
                         fileName: "[project]/frontend/components/Calculator.tsx",
-                        lineNumber: 535,
+                        lineNumber: 543,
                         columnNumber: 46
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 534,
+                lineNumber: 542,
                 columnNumber: 17
             }, this), 'danger');
             return;
@@ -2661,19 +2666,19 @@ function CalculatorComponent() {
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/components/Calculator.tsx",
-                                            lineNumber: 560,
+                                            lineNumber: 568,
                                             columnNumber: 29
                                         }, this),
                                         "Dane Umowy i Partnera"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/components/Calculator.tsx",
-                                    lineNumber: 559,
+                                    lineNumber: 567,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 558,
+                                lineNumber: 566,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2686,7 +2691,7 @@ function CalculatorComponent() {
                                                 children: "Numer Umowy Finansowania"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 566,
+                                                lineNumber: 574,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2696,13 +2701,13 @@ function CalculatorComponent() {
                                                 onChange: handleChange
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 567,
+                                                lineNumber: 575,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 565,
+                                        lineNumber: 573,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2712,66 +2717,13 @@ function CalculatorComponent() {
                                                 children: "Nazwa Firmy"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 571,
+                                                lineNumber: 579,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
                                                 name: "firmaName",
                                                 placeholder: "Pełna nazwa firmy",
                                                 value: formData.firmaName,
-                                                onChange: handleChange
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 572,
-                                                columnNumber: 29
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 570,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "space-y-2",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "NIP"
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 575,
-                                                columnNumber: 29
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                name: "firmaNIP",
-                                                placeholder: "0000000000",
-                                                value: formData.firmaNIP,
-                                                onChange: handleChange,
-                                                maxLength: 10
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 576,
-                                                columnNumber: 29
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 574,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "space-y-2",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "Ulica i Numer"
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 579,
-                                                columnNumber: 29
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                name: "firmaUlica",
-                                                placeholder: "ul. Przykładowa 1",
-                                                value: formData.firmaUlica,
                                                 onChange: handleChange
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
@@ -2788,17 +2740,18 @@ function CalculatorComponent() {
                                         className: "space-y-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "Kod Pocztowy"
+                                                children: "NIP"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 583,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                name: "firmaKod",
-                                                placeholder: "00-000",
-                                                value: formData.firmaKod,
-                                                onChange: handleChange
+                                                name: "firmaNIP",
+                                                placeholder: "0000000000",
+                                                value: formData.firmaNIP,
+                                                onChange: handleChange,
+                                                maxLength: 10
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 584,
@@ -2814,16 +2767,16 @@ function CalculatorComponent() {
                                         className: "space-y-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "Miasto"
+                                                children: "Ulica i Numer"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 587,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                name: "firmaMiasto",
-                                                placeholder: "Miasto",
-                                                value: formData.firmaMiasto,
+                                                name: "firmaUlica",
+                                                placeholder: "ul. Przykładowa 1",
+                                                value: formData.firmaUlica,
                                                 onChange: handleChange
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
@@ -2835,17 +2788,69 @@ function CalculatorComponent() {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
                                         lineNumber: 586,
                                         columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "space-y-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                children: "Kod Pocztowy"
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 591,
+                                                columnNumber: 29
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                                name: "firmaKod",
+                                                placeholder: "00-000",
+                                                value: formData.firmaKod,
+                                                onChange: handleChange
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 592,
+                                                columnNumber: 29
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/components/Calculator.tsx",
+                                        lineNumber: 590,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "space-y-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                children: "Miasto"
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 595,
+                                                columnNumber: 29
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                                name: "firmaMiasto",
+                                                placeholder: "Miasto",
+                                                value: formData.firmaMiasto,
+                                                onChange: handleChange
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 596,
+                                                columnNumber: 29
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/components/Calculator.tsx",
+                                        lineNumber: 594,
+                                        columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 564,
+                                lineNumber: 572,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/components/Calculator.tsx",
-                        lineNumber: 557,
+                        lineNumber: 565,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -2859,19 +2864,19 @@ function CalculatorComponent() {
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/components/Calculator.tsx",
-                                            lineNumber: 596,
+                                            lineNumber: 604,
                                             columnNumber: 29
                                         }, this),
                                         "Dane Pojazdu"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/components/Calculator.tsx",
-                                    lineNumber: 595,
+                                    lineNumber: 603,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 594,
+                                lineNumber: 602,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2884,7 +2889,7 @@ function CalculatorComponent() {
                                                 children: "Marka"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 602,
+                                                lineNumber: 610,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2892,59 +2897,6 @@ function CalculatorComponent() {
                                                 placeholder: "np. Volvo",
                                                 value: formData.pojazdMarka,
                                                 onChange: handleChange
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 603,
-                                                columnNumber: 29
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 601,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "space-y-2",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "Model"
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 606,
-                                                columnNumber: 29
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                name: "pojazdModel",
-                                                placeholder: "np. FH",
-                                                value: formData.pojazdModel,
-                                                onChange: handleChange
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 607,
-                                                columnNumber: 29
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 605,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "space-y-2",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "Numer VIN"
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 610,
-                                                columnNumber: 29
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                name: "pojazdVIN",
-                                                placeholder: "17 znaków",
-                                                value: formData.pojazdVIN,
-                                                onChange: handleChange,
-                                                maxLength: 17
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 611,
@@ -2960,18 +2912,17 @@ function CalculatorComponent() {
                                         className: "space-y-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "Numer Rejestracyjny"
+                                                children: "Model"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 614,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                name: "pojazdRej",
-                                                placeholder: "np. WX 12345",
-                                                value: formData.pojazdRej,
-                                                onChange: handleChange,
-                                                maxLength: 10
+                                                name: "pojazdModel",
+                                                placeholder: "np. FH",
+                                                value: formData.pojazdModel,
+                                                onChange: handleChange
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 615,
@@ -2984,21 +2935,21 @@ function CalculatorComponent() {
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "space-y-2 md:col-span-2",
+                                        className: "space-y-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                children: "Data pierwszej rejestracji"
+                                                children: "Numer VIN"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 618,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                type: "date",
-                                                name: "pojazdDataRejestracji",
-                                                value: formData.pojazdDataRejestracji,
+                                                name: "pojazdVIN",
+                                                placeholder: "17 znaków",
+                                                value: formData.pojazdVIN,
                                                 onChange: handleChange,
-                                                max: new Date().toISOString().split('T')[0]
+                                                maxLength: 17
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
                                                 lineNumber: 619,
@@ -3009,17 +2960,71 @@ function CalculatorComponent() {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
                                         lineNumber: 617,
                                         columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "space-y-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                children: "Numer Rejestracyjny"
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 622,
+                                                columnNumber: 29
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                                name: "pojazdRej",
+                                                placeholder: "np. WX 12345",
+                                                value: formData.pojazdRej,
+                                                onChange: handleChange,
+                                                maxLength: 10
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 623,
+                                                columnNumber: 29
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/components/Calculator.tsx",
+                                        lineNumber: 621,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "space-y-2 md:col-span-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                children: "Data pierwszej rejestracji"
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 626,
+                                                columnNumber: 29
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                                type: "date",
+                                                name: "pojazdDataRejestracji",
+                                                value: formData.pojazdDataRejestracji,
+                                                onChange: handleChange,
+                                                max: new Date().toISOString().split('T')[0]
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                lineNumber: 627,
+                                                columnNumber: 29
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/components/Calculator.tsx",
+                                        lineNumber: 625,
+                                        columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 600,
+                                lineNumber: 608,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/components/Calculator.tsx",
-                        lineNumber: 593,
+                        lineNumber: 601,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -3033,19 +3038,19 @@ function CalculatorComponent() {
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/components/Calculator.tsx",
-                                            lineNumber: 627,
+                                            lineNumber: 635,
                                             columnNumber: 29
                                         }, this),
                                         "Ubezpieczenie"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/components/Calculator.tsx",
-                                    lineNumber: 626,
+                                    lineNumber: 634,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 625,
+                                lineNumber: 633,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3058,7 +3063,7 @@ function CalculatorComponent() {
                                                 children: "Wariant"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 633,
+                                                lineNumber: 641,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -3071,7 +3076,7 @@ function CalculatorComponent() {
                                                         children: "-- Wybierz Wariant --"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 635,
+                                                        lineNumber: 643,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3079,7 +3084,7 @@ function CalculatorComponent() {
                                                         children: "Basic"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 636,
+                                                        lineNumber: 644,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3087,7 +3092,7 @@ function CalculatorComponent() {
                                                         children: "Top"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 637,
+                                                        lineNumber: 645,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3095,19 +3100,19 @@ function CalculatorComponent() {
                                                         children: "Best+"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 638,
+                                                        lineNumber: 646,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 634,
+                                                lineNumber: 642,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 632,
+                                        lineNumber: 640,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3117,7 +3122,7 @@ function CalculatorComponent() {
                                                 children: "Data Początku"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 642,
+                                                lineNumber: 650,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -3127,13 +3132,13 @@ function CalculatorComponent() {
                                                 onChange: handleChange
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 643,
+                                                lineNumber: 651,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 641,
+                                        lineNumber: 649,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3143,7 +3148,7 @@ function CalculatorComponent() {
                                                 children: "Okres Ochrony"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 646,
+                                                lineNumber: 654,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -3156,7 +3161,7 @@ function CalculatorComponent() {
                                                         children: "12 miesięcy (1 rok)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 648,
+                                                        lineNumber: 656,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3164,7 +3169,7 @@ function CalculatorComponent() {
                                                         children: "24 miesiące (2 lata)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 649,
+                                                        lineNumber: 657,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3172,7 +3177,7 @@ function CalculatorComponent() {
                                                         children: "36 miesięcy (3 lata)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 650,
+                                                        lineNumber: 658,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3180,7 +3185,7 @@ function CalculatorComponent() {
                                                         children: "48 miesięcy (4 lata)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 651,
+                                                        lineNumber: 659,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3188,19 +3193,19 @@ function CalculatorComponent() {
                                                         children: "60 miesięcy (5 lat)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 652,
+                                                        lineNumber: 660,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 647,
+                                                lineNumber: 655,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 645,
+                                        lineNumber: 653,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3210,7 +3215,7 @@ function CalculatorComponent() {
                                                 children: "Obliczona Data Końca"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 656,
+                                                lineNumber: 664,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -3221,13 +3226,13 @@ function CalculatorComponent() {
                                                 className: "bg-gray-100 opacity-70"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 657,
+                                                lineNumber: 665,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 655,
+                                        lineNumber: 663,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3239,12 +3244,12 @@ function CalculatorComponent() {
                                             children: "Przelicz Składkę"
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/components/Calculator.tsx",
-                                            lineNumber: 661,
+                                            lineNumber: 669,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 660,
+                                        lineNumber: 668,
                                         columnNumber: 25
                                     }, this),
                                     errors.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3254,7 +3259,7 @@ function CalculatorComponent() {
                                                 className: "h-5 w-5 shrink-0"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 668,
+                                                lineNumber: 676,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -3262,36 +3267,36 @@ function CalculatorComponent() {
                                                         children: e
                                                     }, i, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 670,
+                                                        lineNumber: 678,
                                                         columnNumber: 59
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 669,
+                                                lineNumber: 677,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 667,
+                                        lineNumber: 675,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 631,
+                                lineNumber: 639,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/components/Calculator.tsx",
-                        lineNumber: 624,
+                        lineNumber: 632,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 556,
+                lineNumber: 564,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3306,12 +3311,12 @@ function CalculatorComponent() {
                                 children: "Podsumowanie"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 683,
+                                lineNumber: 691,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/Calculator.tsx",
-                            lineNumber: 682,
+                            lineNumber: 690,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3323,20 +3328,20 @@ function CalculatorComponent() {
                                         className: "h-12 w-12 mx-auto mb-3 opacity-20"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 688,
+                                        lineNumber: 696,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "Wprowadź dane i przelicz ofertę, aby zobaczyć wynik."
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 689,
+                                        lineNumber: 697,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 687,
+                                lineNumber: 695,
                                 columnNumber: 29
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-4 animate-fade-in",
@@ -3352,7 +3357,7 @@ function CalculatorComponent() {
                                                         children: "Wiek Pojazdu:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 695,
+                                                        lineNumber: 703,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3363,13 +3368,13 @@ function CalculatorComponent() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 696,
+                                                        lineNumber: 704,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 694,
+                                                lineNumber: 702,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3380,7 +3385,7 @@ function CalculatorComponent() {
                                                         children: "Okres polisy:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 699,
+                                                        lineNumber: 707,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3388,19 +3393,19 @@ function CalculatorComponent() {
                                                         children: formatDuration(result.latCalkowite)
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 700,
+                                                        lineNumber: 708,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 698,
+                                                lineNumber: 706,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 693,
+                                        lineNumber: 701,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3414,7 +3419,7 @@ function CalculatorComponent() {
                                                         children: "Składka Łączna"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 706,
+                                                        lineNumber: 714,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3425,13 +3430,13 @@ function CalculatorComponent() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 707,
+                                                        lineNumber: 715,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 705,
+                                                lineNumber: 713,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3441,7 +3446,7 @@ function CalculatorComponent() {
                                                         children: "Miesięcznie (szacunek)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 710,
+                                                        lineNumber: 718,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3451,22 +3456,22 @@ function CalculatorComponent() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 711,
+                                                        lineNumber: 719,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 709,
+                                                lineNumber: 717,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 704,
+                                        lineNumber: 712,
                                         columnNumber: 33
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    isAdmin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "mt-6 border border-gray-200 rounded-md overflow-hidden",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3474,8 +3479,8 @@ function CalculatorComponent() {
                                                 children: "Dane testowe"
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 717,
-                                                columnNumber: 37
+                                                lineNumber: 725,
+                                                columnNumber: 41
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "p-3 text-xs text-gray-500 space-y-1 bg-white",
@@ -3491,8 +3496,8 @@ function CalculatorComponent() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                                lineNumber: 723,
-                                                                columnNumber: 49
+                                                                lineNumber: 731,
+                                                                columnNumber: 53
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 children: [
@@ -3501,14 +3506,14 @@ function CalculatorComponent() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                                lineNumber: 724,
-                                                                columnNumber: 49
+                                                                lineNumber: 732,
+                                                                columnNumber: 53
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 722,
-                                                        columnNumber: 45
+                                                        lineNumber: 730,
+                                                        columnNumber: 49
                                                     }, this),
                                                     result.latT10Z > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "flex justify-between border-b border-gray-100 pb-1 last:border-0 last:pb-0",
@@ -3521,8 +3526,8 @@ function CalculatorComponent() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                                lineNumber: 729,
-                                                                columnNumber: 49
+                                                                lineNumber: 737,
+                                                                columnNumber: 53
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 children: [
@@ -3531,14 +3536,14 @@ function CalculatorComponent() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                                lineNumber: 730,
-                                                                columnNumber: 49
+                                                                lineNumber: 738,
+                                                                columnNumber: 53
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 728,
-                                                        columnNumber: 45
+                                                        lineNumber: 736,
+                                                        columnNumber: 49
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "flex justify-between pt-1 font-medium",
@@ -3549,25 +3554,25 @@ function CalculatorComponent() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/frontend/components/Calculator.tsx",
-                                                            lineNumber: 734,
-                                                            columnNumber: 45
+                                                            lineNumber: 742,
+                                                            columnNumber: 49
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 733,
-                                                        columnNumber: 41
+                                                        lineNumber: 741,
+                                                        columnNumber: 45
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 720,
-                                                columnNumber: 37
+                                                lineNumber: 728,
+                                                columnNumber: 41
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 716,
-                                        columnNumber: 33
+                                        lineNumber: 724,
+                                        columnNumber: 37
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "grid grid-cols-1 gap-2 pt-4",
@@ -3582,7 +3587,7 @@ function CalculatorComponent() {
                                                         children: isGenerating ? 'Generowanie...' : 'Deklaracja (PDF)'
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 741,
+                                                        lineNumber: 750,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -3592,99 +3597,103 @@ function CalculatorComponent() {
                                                         children: isGenerating ? 'Wystawianie...' : 'Wystaw Certyfikat'
                                                     }, void 0, false, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 744,
+                                                        lineNumber: 753,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 740,
+                                                lineNumber: 749,
                                                 columnNumber: 37
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex gap-2",
+                                            isAdmin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                                                        variant: "outline",
-                                                        className: "w-1/2",
-                                                        onClick: handleDownloadXML,
-                                                        disabled: isSending || !issuedNumber,
-                                                        title: !issuedNumber ? "Musisz najpierw wystawić certyfikat" : "",
-                                                        children: "Pobierz XML"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 749,
-                                                        columnNumber: 41
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                                                        variant: "secondary",
-                                                        className: "w-1/2 gap-2",
-                                                        onClick: handleSendXML,
-                                                        disabled: isSending || !issuedNumber,
-                                                        title: !issuedNumber ? "Musisz najpierw wystawić certyfikat" : "",
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex gap-2",
                                                         children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$send$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Send$3e$__["Send"], {
-                                                                className: "h-4 w-4"
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                                                                variant: "outline",
+                                                                className: "w-1/2",
+                                                                onClick: handleDownloadXML,
+                                                                disabled: isSending || !issuedNumber,
+                                                                title: !issuedNumber ? "Musisz najpierw wystawić certyfikat" : "",
+                                                                children: "Pobierz XML"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                                                lineNumber: 765,
-                                                                columnNumber: 45
+                                                                lineNumber: 760,
+                                                                columnNumber: 49
                                                             }, this),
-                                                            " Wyślij (SFTP)"
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                                                                variant: "secondary",
+                                                                className: "w-1/2 gap-2",
+                                                                onClick: handleSendXML,
+                                                                disabled: isSending || !issuedNumber,
+                                                                title: !issuedNumber ? "Musisz najpierw wystawić certyfikat" : "",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$send$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Send$3e$__["Send"], {
+                                                                        className: "h-4 w-4"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/frontend/components/Calculator.tsx",
+                                                                        lineNumber: 776,
+                                                                        columnNumber: 53
+                                                                    }, this),
+                                                                    " Wyślij (SFTP)"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/frontend/components/Calculator.tsx",
+                                                                lineNumber: 769,
+                                                                columnNumber: 49
+                                                            }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                                        lineNumber: 758,
-                                                        columnNumber: 41
+                                                        lineNumber: 759,
+                                                        columnNumber: 45
+                                                    }, this),
+                                                    !issuedNumber && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs text-red-500 text-center mt-1",
+                                                        children: "Aby pobrać/wysłać XML, najpierw wystaw certyfikat."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/frontend/components/Calculator.tsx",
+                                                        lineNumber: 780,
+                                                        columnNumber: 49
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs text-muted-foreground text-center mt-2",
+                                                        children: "Dla PDF używamy nowej technologii wektorowej."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/frontend/components/Calculator.tsx",
+                                                        lineNumber: 784,
+                                                        columnNumber: 45
                                                     }, this)
                                                 ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 748,
-                                                columnNumber: 37
-                                            }, this),
-                                            !issuedNumber && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-red-500 text-center mt-1",
-                                                children: "Aby pobrać/wysłać XML, najpierw wystaw certyfikat."
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 769,
-                                                columnNumber: 41
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-muted-foreground text-center mt-2",
-                                                children: "Dla PDF używamy nowej technologii wektorowej."
-                                            }, void 0, false, {
-                                                fileName: "[project]/frontend/components/Calculator.tsx",
-                                                lineNumber: 773,
-                                                columnNumber: 37
-                                            }, this)
+                                            }, void 0, true)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/components/Calculator.tsx",
-                                        lineNumber: 739,
+                                        lineNumber: 748,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/components/Calculator.tsx",
-                                lineNumber: 692,
+                                lineNumber: 700,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/Calculator.tsx",
-                            lineNumber: 685,
+                            lineNumber: 693,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/components/Calculator.tsx",
-                    lineNumber: 681,
+                    lineNumber: 689,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 680,
+                lineNumber: 688,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Modal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Modal"], {
@@ -3700,7 +3709,7 @@ function CalculatorComponent() {
                             children: "Anuluj"
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/Calculator.tsx",
-                            lineNumber: 789,
+                            lineNumber: 802,
                             columnNumber: 29
                         }, void 0),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -3709,7 +3718,7 @@ function CalculatorComponent() {
                             children: modal.confirmText || 'Potwierdź'
                         }, void 0, false, {
                             fileName: "[project]/frontend/components/Calculator.tsx",
-                            lineNumber: 790,
+                            lineNumber: 803,
                             columnNumber: 29
                         }, void 0)
                     ]
@@ -3719,19 +3728,19 @@ function CalculatorComponent() {
                     children: "Zamknij"
                 }, void 0, false, {
                     fileName: "[project]/frontend/components/Calculator.tsx",
-                    lineNumber: 798,
+                    lineNumber: 811,
                     columnNumber: 25
                 }, void 0),
                 children: modal.content
             }, void 0, false, {
                 fileName: "[project]/frontend/components/Calculator.tsx",
-                lineNumber: 781,
+                lineNumber: 794,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/components/Calculator.tsx",
-        lineNumber: 554,
+        lineNumber: 562,
         columnNumber: 9
     }, this);
 }

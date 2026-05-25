@@ -185,6 +185,7 @@ __turbopack_context__.s([
     "CertificateDocument",
     ()=>CertificateDocument
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$pdf$2f$renderer$2f$lib$2f$react$2d$pdf$2e$browser$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@react-pdf/renderer/lib/react-pdf.browser.js [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$pdf$2f$primitives$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@react-pdf/primitives/lib/index.js [app-client] (ecmascript)");
@@ -890,12 +891,10 @@ const CertificateDocument = ({ formData, result, issuedNumber, signatureUrl })=>
                         },
                         children: [
                             signatureUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$pdf$2f$primitives$2f$lib$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Image"], {
-                                src: ("TURBOPACK compile-time truthy", 1) ? `${window.location.origin}${signatureUrl}` : "TURBOPACK unreachable",
+                                src: `${("TURBOPACK compile-time value", "http://localhost:4000") || 'http://localhost:4000'}${signatureUrl}`,
                                 style: {
-                                    height: 35,
-                                    width: 100,
-                                    objectFit: 'contain',
-                                    marginBottom: 2
+                                    height: 60,
+                                    marginBottom: 5
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/frontend/components/documents/CertificateDocument.tsx",
@@ -999,13 +998,35 @@ function StatsPage() {
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [dateFrom, setDateFrom] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [dateTo, setDateTo] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const dateToRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const [stats, setStats] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         monthCount: 0,
         monthPremium: 0,
         variants: []
     });
+    const [agents, setAgents] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [selectedAgentId, setSelectedAgentId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [isAdminOrBilling, setIsAdminOrBilling] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "StatsPage.useEffect": ()=>{
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                try {
+                    const u = JSON.parse(userStr);
+                    if (u.role === 'ADMIN' || u.role === 'ROZLICZENIA') {
+                        setIsAdminOrBilling(true);
+                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiFetch"])('/api/users/agents').then({
+                            "StatsPage.useEffect": (res)=>res.json()
+                        }["StatsPage.useEffect"]).then({
+                            "StatsPage.useEffect": (data)=>{
+                                if (Array.isArray(data)) setAgents(data);
+                            }
+                        }["StatsPage.useEffect"]).catch({
+                            "StatsPage.useEffect": ()=>{}
+                        }["StatsPage.useEffect"]);
+                    }
+                } catch (e) {}
+            }
             fetchCertificates();
         }
     }["StatsPage.useEffect"], []);
@@ -1015,6 +1036,7 @@ function StatsPage() {
             const params = new URLSearchParams();
             if (dateFrom) params.append('from', dateFrom);
             if (dateTo) params.append('to', dateTo);
+            if (selectedAgentId) params.append('agentId', selectedAgentId);
             const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiFetch"])(`/api/certificates?${params.toString()}`);
             if (!res.ok) throw new Error('Failed to fetch');
             const data = await res.json();
@@ -1089,7 +1111,7 @@ function StatsPage() {
                 signatureUrl: cert.user?.signatureUrl
             }, void 0, false, {
                 fileName: "[project]/frontend/app/stats/page.tsx",
-                lineNumber: 116,
+                lineNumber: 138,
                 columnNumber: 25
             }, this);
             const blob = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$pdf$2f$renderer$2f$lib$2f$react$2d$pdf$2e$browser$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["pdf"])(doc).toBlob();
@@ -1126,7 +1148,7 @@ function StatsPage() {
                 children: "Statystyki i dokumenty"
             }, void 0, false, {
                 fileName: "[project]/frontend/app/stats/page.tsx",
-                lineNumber: 150,
+                lineNumber: 172,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1141,7 +1163,7 @@ function StatsPage() {
                                     children: "Sprzedaż (Bieżący Miesiąc)"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 156,
+                                    lineNumber: 178,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1152,18 +1174,18 @@ function StatsPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 157,
+                                    lineNumber: 179,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/frontend/app/stats/page.tsx",
-                            lineNumber: 155,
+                            lineNumber: 177,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/frontend/app/stats/page.tsx",
-                        lineNumber: 154,
+                        lineNumber: 176,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1175,7 +1197,7 @@ function StatsPage() {
                                     children: "Składka (Bieżący Miesiąc)"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 162,
+                                    lineNumber: 184,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1186,18 +1208,18 @@ function StatsPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 163,
+                                    lineNumber: 185,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/frontend/app/stats/page.tsx",
-                            lineNumber: 161,
+                            lineNumber: 183,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/frontend/app/stats/page.tsx",
-                        lineNumber: 160,
+                        lineNumber: 182,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1208,12 +1230,12 @@ function StatsPage() {
                                     children: "Podział Wariantów"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 168,
+                                    lineNumber: 190,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 167,
+                                lineNumber: 189,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1236,57 +1258,57 @@ function StatsPage() {
                                                         fill: COLORS[index % COLORS.length]
                                                     }, `cell-${index}`, false, {
                                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                                        lineNumber: 185,
+                                                        lineNumber: 207,
                                                         columnNumber: 45
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                                lineNumber: 174,
+                                                lineNumber: 196,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {}, void 0, false, {
                                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 210,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
                                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 211,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                        lineNumber: 173,
+                                        lineNumber: 195,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 194,
                                     columnNumber: 29
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-center text-gray-400 mt-10",
                                     children: "Brak danych"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 215,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 170,
+                                lineNumber: 192,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/app/stats/page.tsx",
-                        lineNumber: 166,
+                        lineNumber: 188,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/app/stats/page.tsx",
-                lineNumber: 153,
+                lineNumber: 175,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Primitives$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1298,22 +1320,59 @@ function StatsPage() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
                                 type: "date",
                                 value: dateFrom,
-                                onChange: (e)=>setDateFrom(e.target.value),
+                                onChange: (e)=>{
+                                    setDateFrom(e.target.value);
+                                    if (e.target.value) {
+                                        setTimeout(()=>{
+                                            try {
+                                                dateToRef.current?.showPicker();
+                                            } catch (err) {}
+                                        }, 100);
+                                    }
+                                },
                                 className: "max-w-[200px]"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 203,
+                                lineNumber: 225,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
                                 type: "date",
                                 value: dateTo,
                                 onChange: (e)=>setDateTo(e.target.value),
+                                ref: dateToRef,
                                 className: "max-w-[200px]"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 209,
+                                lineNumber: 238,
                                 columnNumber: 25
+                            }, this),
+                            isAdminOrBilling && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                className: "border rounded-md px-3 py-2 text-sm max-w-[200px]",
+                                value: selectedAgentId,
+                                onChange: (e)=>setSelectedAgentId(e.target.value),
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: "",
+                                        children: "Wszyscy sprzedawcy"
+                                    }, void 0, false, {
+                                        fileName: "[project]/frontend/app/stats/page.tsx",
+                                        lineNumber: 251,
+                                        columnNumber: 33
+                                    }, this),
+                                    agents.map((a)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: a.id,
+                                            children: a.username
+                                        }, a.id, false, {
+                                            fileName: "[project]/frontend/app/stats/page.tsx",
+                                            lineNumber: 253,
+                                            columnNumber: 37
+                                        }, this))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/frontend/app/stats/page.tsx",
+                                lineNumber: 246,
+                                columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                 onClick: fetchCertificates,
@@ -1321,36 +1380,37 @@ function StatsPage() {
                                 children: "Filtruj"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 215,
+                                lineNumber: 257,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                 onClick: ()=>{
                                     setDateFrom('');
                                     setDateTo('');
+                                    setSelectedAgentId('');
                                     fetchCertificates();
                                 },
                                 variant: "outline",
                                 children: "Reset"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 216,
+                                lineNumber: 258,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/app/stats/page.tsx",
-                        lineNumber: 202,
+                        lineNumber: 224,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/frontend/app/stats/page.tsx",
-                    lineNumber: 201,
+                    lineNumber: 223,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/app/stats/page.tsx",
-                lineNumber: 200,
+                lineNumber: 222,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1367,7 +1427,7 @@ function StatsPage() {
                                         children: "Nr Certyfikatu"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                        lineNumber: 226,
+                                        lineNumber: 268,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1375,7 +1435,15 @@ function StatsPage() {
                                         children: "Klient"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 269,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                        children: "Sprzedawca"
+                                    }, void 0, false, {
+                                        fileName: "[project]/frontend/app/stats/page.tsx",
+                                        lineNumber: 270,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1383,7 +1451,7 @@ function StatsPage() {
                                         children: "Wariant"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                        lineNumber: 228,
+                                        lineNumber: 271,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1391,7 +1459,7 @@ function StatsPage() {
                                         children: "Składka"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                        lineNumber: 229,
+                                        lineNumber: 272,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1399,7 +1467,7 @@ function StatsPage() {
                                         children: "Data Wystawienia"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 273,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1407,49 +1475,49 @@ function StatsPage() {
                                         children: "Pobierz"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/app/stats/page.tsx",
-                                        lineNumber: 231,
+                                        lineNumber: 274,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 225,
+                                lineNumber: 267,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/stats/page.tsx",
-                            lineNumber: 224,
+                            lineNumber: 266,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                             className: "bg-white divide-y divide-gray-200",
                             children: loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                    colSpan: 6,
+                                    colSpan: 7,
                                     className: "px-6 py-4 text-center",
                                     children: "Ładowanie..."
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 236,
+                                    lineNumber: 279,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 236,
+                                lineNumber: 279,
                                 columnNumber: 29
                             }, this) : certificates.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                    colSpan: 6,
+                                    colSpan: 7,
                                     className: "px-6 py-4 text-center",
                                     children: "Brak polis"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 281,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                lineNumber: 238,
+                                lineNumber: 281,
                                 columnNumber: 29
                             }, this) : certificates.map((cert)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                     className: "hover:bg-gray-50",
@@ -1459,7 +1527,7 @@ function StatsPage() {
                                             children: cert.numerCertyfikatu
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/stats/page.tsx",
-                                            lineNumber: 242,
+                                            lineNumber: 285,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1470,7 +1538,7 @@ function StatsPage() {
                                                     children: cert.parsedData?.firmaName
                                                 }, void 0, false, {
                                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                                    lineNumber: 244,
+                                                    lineNumber: 287,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1481,13 +1549,21 @@ function StatsPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                                    lineNumber: 245,
+                                                    lineNumber: 288,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/frontend/app/stats/page.tsx",
-                                            lineNumber: 243,
+                                            lineNumber: 286,
+                                            columnNumber: 37
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "px-6 py-4 text-sm text-gray-500",
+                                            children: cert.user?.username || '-'
+                                        }, void 0, false, {
+                                            fileName: "[project]/frontend/app/stats/page.tsx",
+                                            lineNumber: 290,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1495,7 +1571,7 @@ function StatsPage() {
                                             children: cert.parsedData?.opcjaUbez
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/stats/page.tsx",
-                                            lineNumber: 247,
+                                            lineNumber: 291,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1503,7 +1579,7 @@ function StatsPage() {
                                             children: cert.parsedData?.skladka ? `${formatCurrency(cert.parsedData.skladka)} PLN` : '-'
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/stats/page.tsx",
-                                            lineNumber: 248,
+                                            lineNumber: 292,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1511,7 +1587,7 @@ function StatsPage() {
                                             children: new Date(cert.dataWystawienia).toLocaleDateString('pl-PL')
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/stats/page.tsx",
-                                            lineNumber: 249,
+                                            lineNumber: 293,
                                             columnNumber: 37
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1525,49 +1601,49 @@ function StatsPage() {
                                                     className: "h-4 w-4 text-gray-600"
                                                 }, void 0, false, {
                                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                                    lineNumber: 252,
+                                                    lineNumber: 296,
                                                     columnNumber: 45
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/frontend/app/stats/page.tsx",
-                                                lineNumber: 251,
+                                                lineNumber: 295,
                                                 columnNumber: 41
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/app/stats/page.tsx",
-                                            lineNumber: 250,
+                                            lineNumber: 294,
                                             columnNumber: 37
                                         }, this)
                                     ]
                                 }, cert.id, true, {
                                     fileName: "[project]/frontend/app/stats/page.tsx",
-                                    lineNumber: 241,
+                                    lineNumber: 284,
                                     columnNumber: 33
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/frontend/app/stats/page.tsx",
-                            lineNumber: 234,
+                            lineNumber: 277,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/app/stats/page.tsx",
-                    lineNumber: 223,
+                    lineNumber: 265,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/app/stats/page.tsx",
-                lineNumber: 222,
+                lineNumber: 264,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/app/stats/page.tsx",
-        lineNumber: 149,
+        lineNumber: 171,
         columnNumber: 9
     }, this);
 }
-_s(StatsPage, "7DcUsRbj7HMagnTj9JZZimPS5vk=");
+_s(StatsPage, "J58pD8aT1Cm1H/aMg6aL9VhVj7Q=");
 _c = StatsPage;
 var _c;
 __turbopack_context__.k.register(_c, "StatsPage");
