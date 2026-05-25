@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Certificate {
+  id              Int      @id @default(autoincrement())
+  numerCertyfikatu String   @unique
+  numerUmowy      String
+  daneKlienta     String   // Stores JSON payload of formData
+  dataWystawienia DateTime @default(now())
+  xmlWyslany      Boolean  @default(false)
+  
+  userId          Int?
+  user            User?    @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  role      String   @default("USER") // 'ADMIN' or 'USER'
+  signatureUrl String?
+  createdAt DateTime @default(now())
+  certificates Certificate[]
+}

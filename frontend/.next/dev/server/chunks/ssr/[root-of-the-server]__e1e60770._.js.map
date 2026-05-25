@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/micmarzec/Documents/Projekty/Antigravity/frontend/app/admin/page.tsx"],"sourcesContent":["import { redirect } from 'next/navigation';\n\nexport default function AdminPage() {\n    redirect('/admin/users');\n}\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEe,SAAS;IACpB,IAAA,iMAAQ,EAAC;AACb"}}]
+}

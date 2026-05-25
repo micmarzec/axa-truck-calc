@@ -1,0 +1,2688 @@
+[00:00:00.483] Server  LOG     ✓ Ready in 367ms
+[00:00:28.330] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:30.184] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:58.621] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:02.916] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:51.849] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.852] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.854] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.857] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.859] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.861] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.863] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.865] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.867] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.869] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.871] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.872] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.874] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.876] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.878] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.880] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.882] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.884] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.886] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.888] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.889] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.891] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.892] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.894] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.896] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.898] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.900] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.901] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.903] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.906] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.908] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.909] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.911] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.913] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.914] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.915] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.917] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.919] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.920] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.922] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.924] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.925] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.927] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.929] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.931] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.933] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.935] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.936] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.938] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.940] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.942] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.944] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.945] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.947] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.949] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.950] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.952] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.953] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.955] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.957] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.958] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.960] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.962] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.963] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.965] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.967] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.968] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.970] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.971] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.973] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.975] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.976] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.978] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.979] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.981] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.982] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.985] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.986] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.988] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.989] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.991] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.993] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.994] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.995] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.997] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:51.999] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:52.000] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:52.002] Server  ERROR   ⨯ ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:05:52.004] Server  LOG     ✓ Compiled in 208ms
+[00:05:52.239] Browser ERROR   ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:05:52.240] Browser ERROR   ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:05:52.241] Browser ERROR   ./frontend/components/Calculator.tsx:4:1
+Module not found: Can't resolve '@/lib/calculator'
+  2 |
+  3 | import React, { useState, useEffect } from "react"
+> 4 | import { PackageType, CalculationResult, calculatePremium } from "@/lib/calculator"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Button } from "./ui/Button"
+  6 | import { Input } from "./ui/Input"
+  7 | import { Label } from "./ui/Primitives"
+
+Import map: aliased to relative './lib/calculator' inside of [project]/frontend
+
+Import trace:
+  Server Component:
+    ./frontend/components/Calculator.tsx
+    ./frontend/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:50.809] Server  LOG     ✓ Compiled in 55ms
+[00:29:35.519] Server  LOG     ✓ Compiled in 87ms
+[00:29:47.902] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:47.946] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:48.060] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:34.803] Server  LOG     ✓ Compiled in 47ms
+[00:30:44.708] Server  LOG     ✓ Compiled in 38ms
+[00:31:05.579] Server  LOG     ✓ Compiled in 41ms
+[00:33:18.750] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:34.600] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:00.869] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:11.338] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:34.869] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:42.605] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:12.098] Server  LOG     ✓ Compiled in 275ms
+[00:50:12.343] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:12.366] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:25.685] Server  LOG     ✓ Compiled in 69ms
+[00:51:04.321] Server  LOG     ✓ Compiled in 92ms
+[00:51:15.485] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:21.838] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:34.625] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:35.740] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:35.843] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:51.999] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:55.910] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:04.952] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:09.719] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:29.629] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:36.156] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:38.597] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:40.439] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:42.603] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:50.619] Server  LOG     ✓ Compiled in 74ms
+[00:56:04.370] Server  LOG     ✓ Compiled in 30ms
+[00:56:17.190] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:56:17.190] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:56:17.190] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:56:17.190] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.070] Server  ERROR   ⨯ ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+
+./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:57:01.189] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.189] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.599] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.599] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.599] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.599] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.699] Browser ERROR   uncaughtError: Error: ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:57:01.856] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.856] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.856] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:01.856] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:02.191] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:03.594] Server  LOG     ✓ Compiled in 25ms
+[00:57:03.697] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:03.697] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:04.190] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:04.190] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:11.899] Server  ERROR   ⨯ ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+
+./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:57:11.983] Browser ERROR   uncaughtError: Error: ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:57:12.120] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:12.120] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:12.120] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:12.120] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:12.190] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:12.190] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:12.190] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:12.190] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:29.071] Server  ERROR   ⨯ ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+
+./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:57:29.165] Browser ERROR   uncaughtError: Error: ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:57:29.302] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:29.302] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:29.302] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:29.302] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:30.190] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:30.190] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:30.190] Browser ERROR   ./frontend/app/page.tsx:2:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+> 2 | import { useEffect } from 'react';
+    |          ^^^^^^^^^
+  3 | import { useRouter } from 'next/navigation';
+  4 | import { getUser } from '@/lib/api';
+  5 |
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:30.190] Browser ERROR   ./frontend/app/page.tsx:3:10
+Ecmascript file had an error
+  1 | import CalculatorComponent from "@/components/Calculator";
+  2 | import { useEffect } from 'react';
+> 3 | import { useRouter } from 'next/navigation';
+    |          ^^^^^^^^^
+  4 | import { getUser } from '@/lib/api';
+  5 |
+  6 | export default function Home() {
+
+You're importing a component that needs `useRouter`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:57:51.123] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:58:59.438] Server  LOG     ✓ Compiled in 49ms
+[00:59:33.071] Server  LOG     ✓ Compiled in 35ms
+[00:59:36.257] Browser ERROR   {}
+[01:00:07.855] Browser ERROR   {}
+[01:00:15.525] Browser ERROR   {}
+[01:00:17.506] Browser ERROR   {}
+[01:01:27.358] Server  LOG     ✓ Compiled in 25ms
+[01:04:11.430] Browser ERROR   {}
+[01:04:11.544] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [[object Object]] []
+[01:04:34.119] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:04:59.760] Server  LOG     ✓ Compiled in 62ms
+[01:08:11.827] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:52.847] Server  LOG     ✓ Compiled in 42ms
+[01:10:25.693] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:10:40.344] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:11:34.510] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:03.577] Server  LOG     ✓ Compiled in 63ms
+[01:13:24.715] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:47.417] Server  LOG     ✓ Compiled in 53ms
+[01:17:18.718] Server  LOG     ✓ Compiled in 35ms
+[01:17:18.809] Server  LOG     ✓ Compiled in 17ms
+[01:17:34.658] Browser ERROR   uncaughtError: ReferenceError: useRef is not defined
+[01:17:55.691] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:17:55.801] Server  LOG     ✓ Compiled in 31ms
+[01:17:56.024] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:53.749] Server  LOG     ✓ Compiled in 34ms
+[01:19:19.023] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:19:25.033] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:21:21.185] Browser LOG     Sending XML request...
+[01:22:02.350] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[01:22:02.350] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[01:22:34.738] Server  LOG     ✓ Compiled in 38ms
+[01:24:46.442] Server  LOG     ✓ Compiled in 38ms
+[01:32:29.598] Server  LOG     ✓ Compiled in 68ms
