@@ -100,22 +100,33 @@ export default function UsersPage() {
 
         const reader = new FileReader();
         reader.onloadend = async () => {
-            const base64Image = reader.result as string;
-            
-            try {
-                const res = await apiFetch(`/api/users/${userId}/signature`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ base64Image })
-                });
+            const img = new window.Image();
+            img.onload = async () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    ctx.drawImage(img, 0, 0);
+                    const base64Image = canvas.toDataURL('image/png');
+                    
+                    try {
+                        const res = await apiFetch(`/api/users/${userId}/signature`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ base64Image })
+                        });
 
-                if (!res.ok) throw new Error('Nie udało się wgrać podpisu');
-                
-                alert('Podpis wgrany pomyślnie!');
-                fetchUsers(); // Refresh list
-            } catch (err: any) {
-                alert(err.message);
-            }
+                        if (!res.ok) throw new Error('Nie udało się wgrać podpisu');
+                        
+                        alert('Podpis wgrany pomyślnie!');
+                        fetchUsers(); // Refresh list
+                    } catch (err: any) {
+                        alert(err.message);
+                    }
+                }
+            };
+            img.src = reader.result as string;
         };
         reader.readAsDataURL(file);
     };

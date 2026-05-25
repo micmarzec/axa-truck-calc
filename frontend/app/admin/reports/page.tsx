@@ -17,6 +17,9 @@ interface Certificate {
     xmlWyslany: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     parsedData?: any;
+    user?: {
+        username?: string;
+    };
 }
 
 export default function ReportsPage() {
@@ -28,6 +31,8 @@ export default function ReportsPage() {
     const dateToRef = useRef<HTMLInputElement>(null);
     const [confirmModalOpen, setConfirmModalOpen] = useState(false);
     const [pendingSftpIds, setPendingSftpIds] = useState<number[]>([]);
+    const [agents, setAgents] = useState<{ id: number, username: string }[]>([]);
+    const [selectedAgentId, setSelectedAgentId] = useState<string>('');
     const user = getUser();
 
     useEffect(() => {
@@ -36,6 +41,14 @@ export default function ReportsPage() {
             window.location.href = '/stats';
             return;
         }
+        
+        apiFetch('/api/users/agents')
+            .then(res => res.json())
+            .then(data => {
+                if (Array.isArray(data)) setAgents(data);
+            })
+            .catch(() => {});
+
         fetchCertificates();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -46,6 +59,7 @@ export default function ReportsPage() {
             const params = new URLSearchParams();
             if (dateFrom) params.append('from', dateFrom);
             if (dateTo) params.append('to', dateTo);
+            if (selectedAgentId) params.append('agentId', selectedAgentId);
 
             const res = await apiFetch(`/api/certificates?${params.toString()}`);
             if (!res.ok) throw new Error('Failed to fetch');
@@ -166,6 +180,16 @@ export default function ReportsPage() {
                                 ref={dateToRef}
                                 className="max-w-[200px]"
                             />
+                            <select
+                                className="border rounded-md px-3 py-2 text-sm max-w-[200px]"
+                                value={selectedAgentId}
+                                onChange={(e) => setSelectedAgentId(e.target.value)}
+                            >
+                                <option value="">Wszyscy sprzedawcy</option>
+                                {agents.map(a => (
+                                    <option key={a.id} value={a.id}>{a.username}</option>
+                                ))}
+                            </select>
                             <Button onClick={fetchCertificates} variant="secondary">Filtruj</Button>
                         </div>
                         <div className="flex gap-2">
@@ -192,6 +216,7 @@ export default function ReportsPage() {
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nr Certyfikatu</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Klient</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sprzedawca</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wariant</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data Wystawienia</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wysłane</th>
@@ -200,9 +225,9 @@ export default function ReportsPage() {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                         {loading ? (
-                            <tr><td colSpan={6} className="px-6 py-4 text-center">Ładowanie...</td></tr>
+                            <tr><td colSpan={8} className="px-6 py-4 text-center">Ładowanie...</td></tr>
                         ) : certificates.length === 0 ? (
-                            <tr><td colSpan={6} className="px-6 py-4 text-center">Brak polis w bazie</td></tr>
+                            <tr><td colSpan={8} className="px-6 py-4 text-center">Brak polis w bazie</td></tr>
                         ) : (
                             certificates.map(cert => (
                                 <tr key={cert.id} className="hover:bg-gray-50">
@@ -218,6 +243,7 @@ export default function ReportsPage() {
                                         <div className="text-sm font-medium text-gray-900">{cert.parsedData?.firmaName}</div>
                                         <div className="text-sm text-gray-500">NIP: {cert.parsedData?.firmaNIP}</div>
                                     </td>
+                                    <td className="px-6 py-4 text-sm text-gray-500">{cert.user?.username || '-'}</td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{cert.parsedData?.opcjaUbez}</td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{new Date(cert.dataWystawienia).toLocaleDateString('pl-PL')}</td>
                                     <td className="px-6 py-4 text-sm">

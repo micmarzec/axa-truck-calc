@@ -24,7 +24,13 @@ const signaturesDir = path.join(__dirname, '../public/signatures');
 if (!fs.existsSync(signaturesDir)) {
     fs.mkdirSync(signaturesDir, { recursive: true });
 }
-app.use('/signatures', express.static(signaturesDir));
+app.use('/signatures', express.static(signaturesDir, {
+    setHeaders: (res) => {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+        res.set('Access-Control-Allow-Headers', '*');
+    }
+}));
 
 // --- SEED ADMIN ---
 async function seedAdmin() {
@@ -67,6 +73,18 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 // --- USER MANAGEMENT ROUTES (ADMIN ONLY) ---
+app.get('/api/users/agents', authenticateToken, async (req, res) => {
+    try {
+        const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
+        if (!isAdminOrBilling) return res.status(403).json({ error: 'Brak dostępu' });
+        
+        const users = await prisma.user.findMany({ select: { id: true, username: true } });
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch agents' });
+    }
+});
+
 app.get('/api/users', authenticateToken, requireAdmin, async (req, res) => {
     try {
         const users = await prisma.user.findMany({ select: { id: true, username: true, role: true, signatureUrl: true, createdAt: true } });
@@ -220,12 +238,18 @@ app.post('/api/calculate', (req, res) => {
 app.get('/api/certificates', authenticateToken, async (req, res) => {
     try {
         const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
-        const whereClause = isAdminOrBilling ? {} : { userId: req.user?.id };
+        const agentId = req.query.agentId ? parseInt(req.query.agentId as string, 10) : undefined;
+        
+        const whereClause: any = isAdminOrBilling ? {} : { userId: req.user?.id };
+        
+        if (isAdminOrBilling && agentId) {
+            whereClause.userId = agentId;
+        }
 
         const certificates = await prisma.certificate.findMany({
             where: whereClause,
             orderBy: { dataWystawienia: 'desc' },
-            include: { user: { select: { signatureUrl: true } } }
+            include: { user: { select: { signatureUrl: true, username: true } } }
         });
         res.json(certificates);
     } catch (error) {
@@ -250,20 +274,25 @@ app.post('/api/certificates', authenticateToken, async (req, res) => {
         let numerCertyfikatu = '';
 
         await prisma.$transaction(async (tx) => {
+            const allCerts = await tx.certificate.findMany({ select: { numerCertyfikatu: true } });
+            let maxNum = 0;
+            for (const c of allCerts) {
+                const matches = c.numerCertyfikatu.match(/(?:CER0|CER|45789)(\d+)/g);
+                if (matches) {
+                    for (const m of matches) {
+                        const n = parseInt(m.replace(/CER0|CER|45789/, ''), 10);
+                        if (n > maxNum) maxNum = n;
+                    }
+                }
+            }
+
             if (isDoubleTariff) {
-                // Reserve two certificates
-                const mockCert1 = await tx.certificate.create({ data: { numerCertyfikatu: `MOCK_${Date.now()}_1`, numerUmowy: formData.numerUmowy, daneKlienta: '', userId: req.user?.id } });
-                const mockCert2 = await tx.certificate.create({ data: { numerCertyfikatu: `MOCK_${Date.now()}_2`, numerUmowy: formData.numerUmowy, daneKlienta: '', userId: req.user?.id } });
-                
-                const certNum1 = `CER${String(mockCert1.id).padStart(6, '0')}`;
-                const certNum2 = `CER${String(mockCert2.id).padStart(6, '0')}`;
-                numerCertyfikatu = `${certNum1}, ${certNum2}`;
-                
-                await tx.certificate.deleteMany({ where: { id: { in: [mockCert1.id, mockCert2.id] } } });
+                const num1 = maxNum + 1;
+                const num2 = maxNum + 2;
+                numerCertyfikatu = `45789${String(num1).padStart(5, '0')}, 45789${String(num2).padStart(5, '0')}`;
             } else {
-                const mockCert = await tx.certificate.create({ data: { numerCertyfikatu: `MOCK_${Date.now()}`, numerUmowy: formData.numerUmowy, daneKlienta: '', userId: req.user?.id } });
-                numerCertyfikatu = `CER${String(mockCert.id).padStart(6, '0')}`;
-                await tx.certificate.delete({ where: { id: mockCert.id } });
+                const num1 = maxNum + 1;
+                numerCertyfikatu = `45789${String(num1).padStart(5, '0')}`;
             }
 
             const cert = await tx.certificate.create({

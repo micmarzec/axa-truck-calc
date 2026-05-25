@@ -252,8 +252,8 @@ export const CertificateDocument: React.FC<CertificateProps> = ({ formData, resu
                     <View style={{ alignItems: 'center' }}>
                         {signatureUrl ? (
                             <Image 
-                                src={typeof window !== 'undefined' ? `${window.location.origin}${signatureUrl}` : `http://localhost:4000${signatureUrl}`} 
-                                style={{ height: 35, width: 100, objectFit: 'contain', marginBottom: 2 }} 
+                                src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}${signatureUrl}`} 
+                                style={{ height: 60, marginBottom: 5 }} 
                             />
                         ) : (
                             <Text style={{ marginBottom: 2 }}>........................................</Text>

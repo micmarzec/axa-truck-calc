@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Primitives';
@@ -20,6 +20,7 @@ interface Certificate {
     parsedData?: any;
     user?: {
         signatureUrl?: string;
+        username?: string;
     };
 }
 
@@ -28,6 +29,7 @@ export default function StatsPage() {
     const [loading, setLoading] = useState(true);
     const [dateFrom, setDateFrom] = useState('');
     const [dateTo, setDateTo] = useState('');
+    const dateToRef = useRef<HTMLInputElement>(null);
 
     const [stats, setStats] = useState({
         monthCount: 0,
@@ -203,17 +205,37 @@ export default function StatsPage() {
                         <Input
                             type="date"
                             value={dateFrom}
-                            onChange={(e) => setDateFrom(e.target.value)}
+                            onChange={(e) => {
+                                setDateFrom(e.target.value);
+                                if (e.target.value) {
+                                    setTimeout(() => {
+                                        try { dateToRef.current?.showPicker(); } catch (err) {}
+                                    }, 100);
+                                }
+                            }}
                             className="max-w-[200px]"
                         />
                         <Input
                             type="date"
                             value={dateTo}
                             onChange={(e) => setDateTo(e.target.value)}
+                            ref={dateToRef}
                             className="max-w-[200px]"
                         />
+                        {isAdminOrBilling && (
+                            <select
+                                className="border rounded-md px-3 py-2 text-sm max-w-[200px]"
+                                value={selectedAgentId}
+                                onChange={(e) => setSelectedAgentId(e.target.value)}
+                            >
+                                <option value="">Wszyscy sprzedawcy</option>
+                                {agents.map(a => (
+                                    <option key={a.id} value={a.id}>{a.username}</option>
+                                ))}
+                            </select>
+                        )}
                         <Button onClick={fetchCertificates} variant="secondary">Filtruj</Button>
-                        <Button onClick={() => { setDateFrom(''); setDateTo(''); fetchCertificates(); }} variant="outline">Reset</Button>
+                        <Button onClick={() => { setDateFrom(''); setDateTo(''); setSelectedAgentId(''); fetchCertificates(); }} variant="outline">Reset</Button>
                     </div>
                 </CardContent>
             </Card>
@@ -225,6 +247,7 @@ export default function StatsPage() {
                         <tr>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nr Certyfikatu</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Klient</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sprzedawca</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wariant</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Składka</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data Wystawienia</th>
@@ -233,9 +256,9 @@ export default function StatsPage() {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                         {loading ? (
-                            <tr><td colSpan={6} className="px-6 py-4 text-center">Ładowanie...</td></tr>
+                            <tr><td colSpan={7} className="px-6 py-4 text-center">Ładowanie...</td></tr>
                         ) : certificates.length === 0 ? (
-                            <tr><td colSpan={6} className="px-6 py-4 text-center">Brak polis</td></tr>
+                            <tr><td colSpan={7} className="px-6 py-4 text-center">Brak polis</td></tr>
                         ) : (
                             certificates.map(cert => (
                                 <tr key={cert.id} className="hover:bg-gray-50">
@@ -244,6 +267,7 @@ export default function StatsPage() {
                                         <div className="text-sm font-medium text-gray-900">{cert.parsedData?.firmaName}</div>
                                         <div className="text-sm text-gray-500">NIP: {cert.parsedData?.firmaNIP}</div>
                                     </td>
+                                    <td className="px-6 py-4 text-sm text-gray-500">{cert.user?.username || '-'}</td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{cert.parsedData?.opcjaUbez}</td>
                                     <td className="px-6 py-4 text-sm font-medium">{cert.parsedData?.skladka ? `${formatCurrency(cert.parsedData.skladka)} PLN` : '-'}</td>
                                     <td className="px-6 py-4 text-sm text-gray-500">{new Date(cert.dataWystawienia).toLocaleDateString('pl-PL')}</td>
