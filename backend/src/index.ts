@@ -11,6 +11,8 @@ import { authenticateToken, requireAdmin } from './middleware/auth';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import JSZip from 'jszip';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
 
 dotenv.config();
 
@@ -18,7 +20,32 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
-const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwtkey_antigravity';
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Truck-Calc API',
+            version: '1.0.0',
+            description: 'API Documentation'
+        },
+        components: {
+            securitySchemes: {
+                BearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [{ BearerAuth: [] }],
+    },
+    apis: ['./src/index.ts'],
+};
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwtkey_truckcalc';
 
 const signaturesDir = path.join(__dirname, '../public/signatures');
 if (!fs.existsSync(signaturesDir)) {
@@ -54,6 +81,18 @@ async function seedAdmin() {
 seedAdmin();
 
 // --- AUTHENTICATION ROUTES ---
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Logowanie użytkownika
+ *     tags: [auth]
+ *     security:
+ *       - []
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/auth/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -73,6 +112,16 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 // --- USER MANAGEMENT ROUTES (ADMIN ONLY) ---
+/**
+ * @swagger
+ * /api/users/agents:
+ *   get:
+ *     summary: Lista agentów (tylko Admin/Rozliczenia)
+ *     tags: [users]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.get('/api/users/agents', authenticateToken, async (req, res) => {
     try {
         const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
@@ -120,6 +169,16 @@ app.post('/api/users', authenticateToken, requireAdmin, async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /api/users/:id:
+ *   delete:
+ *     summary: Usuń użytkownika (tylko Admin)
+ *     tags: [users]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.delete('/api/users/:id', authenticateToken, requireAdmin, async (req, res) => {
     try {
         const userId = parseInt(req.params.id, 10);
@@ -134,6 +193,16 @@ app.delete('/api/users/:id', authenticateToken, requireAdmin, async (req, res) =
     }
 });
 
+/**
+ * @swagger
+ * /api/users/:id/password:
+ *   post:
+ *     summary: Zmień hasło użytkownika (tylko Admin)
+ *     tags: [users]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/users/:id/password', authenticateToken, requireAdmin, async (req, res) => {
     try {
         const userId = parseInt(req.params.id, 10);
@@ -153,6 +222,16 @@ app.post('/api/users/:id/password', authenticateToken, requireAdmin, async (req,
     }
 });
 
+/**
+ * @swagger
+ * /api/users/change-password:
+ *   post:
+ *     summary: Zmień własne hasło
+ *     tags: [users]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/users/change-password', authenticateToken, async (req, res) => {
     try {
         const { oldPassword, newPassword } = req.body;
@@ -180,6 +259,16 @@ app.post('/api/users/change-password', authenticateToken, async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /api/users/:id/signature:
+ *   post:
+ *     summary: Wgraj podpis (tylko Admin)
+ *     tags: [users]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/users/:id/signature', authenticateToken, requireAdmin, async (req, res) => {
     try {
         const userId = parseInt(req.params.id, 10);
@@ -215,6 +304,16 @@ app.post('/api/users/:id/signature', authenticateToken, requireAdmin, async (req
 });
 
 // POST /api/calculate
+/**
+ * @swagger
+ * /api/calculate:
+ *   post:
+ *     summary: Kalkulator składki
+ *     tags: [calculate]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/calculate', (req, res) => {
     try {
         const { wiekPojazdu, opcja, dataOd, dataDo } = req.body;
@@ -238,6 +337,16 @@ app.post('/api/calculate', (req, res) => {
 });
 
 // GET /api/certificates
+/**
+ * @swagger
+ * /api/certificates:
+ *   get:
+ *     summary: Pobierz listę certyfikatów
+ *     tags: [certificates]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.get('/api/certificates', authenticateToken, async (req, res) => {
     try {
         const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
@@ -333,6 +442,16 @@ app.post('/api/certificates', authenticateToken, async (req, res) => {
 });
 
 // POST /api/download-xml
+/**
+ * @swagger
+ * /api/download-xml:
+ *   post:
+ *     summary: Pobierz XML dla certyfikatu
+ *     tags: [download-xml]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/download-xml', authenticateToken, (req, res) => {
     try {
         const { formData, calculation } = req.body;
@@ -364,6 +483,16 @@ app.post('/api/download-xml', authenticateToken, (req, res) => {
 });
 
 // POST /api/send-xml
+/**
+ * @swagger
+ * /api/send-xml:
+ *   post:
+ *     summary: Wyślij XML na SFTP
+ *     tags: [send-xml]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/send-xml', authenticateToken, async (req, res) => {
     try {
         const { formData, calculation } = req.body;
@@ -396,6 +525,16 @@ app.post('/api/send-xml', authenticateToken, async (req, res) => {
 });
 
 // POST /api/certificates/bulk-xml
+/**
+ * @swagger
+ * /api/certificates/bulk-xml:
+ *   post:
+ *     summary: Zbiorcze pobranie XML w archiwum ZIP
+ *     tags: [certificates]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/certificates/bulk-xml', authenticateToken, async (req, res) => {
     try {
         const { ids } = req.body;
@@ -441,6 +580,16 @@ app.post('/api/certificates/bulk-xml', authenticateToken, async (req, res) => {
 });
 
 // POST /api/certificates/bulk-send-sftp
+/**
+ * @swagger
+ * /api/certificates/bulk-send-sftp:
+ *   post:
+ *     summary: Zbiorcza wysyłka XML na SFTP
+ *     tags: [certificates]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/certificates/bulk-send-sftp', authenticateToken, async (req, res) => {
     try {
         const { ids } = req.body;
@@ -493,6 +642,16 @@ app.post('/api/certificates/bulk-send-sftp', authenticateToken, async (req, res)
 });
 
 // POST /api/certificates/download-xml
+/**
+ * @swagger
+ * /api/certificates/download-xml:
+ *   post:
+ *     summary: Pobierz XML z bazy po ID
+ *     tags: [certificates]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
 app.post('/api/certificates/download-xml', authenticateToken, async (req, res) => {
     try {
         const { id } = req.body;

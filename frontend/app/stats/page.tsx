@@ -332,10 +332,10 @@ export default function StatsPage() {
                                     <td className="px-6 py-4 text-sm text-gray-500">{new Date(cert.dataWystawienia).toLocaleDateString('pl-PL')}</td>
                                     <td className="px-6 py-4 text-right flex justify-end gap-2">
                                         <Button variant="ghost" size="sm" onClick={() => handleDownloadSingle(cert)} title="Pobierz PDF (Certyfikat)">
-                                            <Download className="h-4 w-4 text-gray-600" />
+                                            <Download className="h-5 w-5 text-indigo-600" />
                                         </Button>
                                         <Button variant="ghost" size="sm" onClick={() => handleDownloadSignedDeclaration(cert)} title="Pobierz Podpisaną Deklarację">
-                                            <FileSignature className="h-4 w-4 text-blue-600" />
+                                            <FileSignature className="h-5 w-5 text-purple-600" />
                                         </Button>
                                     </td>
                                 </tr>

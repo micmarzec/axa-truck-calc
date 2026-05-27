@@ -5,10 +5,11 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardContent } from '@/components/ui/Primitives';
 import { apiFetch, getUser } from '@/lib/api';
-import { FileDown, FileText, Send, CheckCircle2, XCircle, FileSignature } from 'lucide-react';
+import { FileDown, FileText, Send, CheckCircle2, XCircle, FileSignature, Download } from 'lucide-react';
 import { Modal } from '@/components/ui/Modal';
 import { pdf } from '@react-pdf/renderer';
 import { SignedDeclarationDocument } from '@/components/documents/SignedDeclarationDocument';
+import { CertificateDocument } from '@/components/documents/CertificateDocument';
 
 interface Certificate {
     id: number;
@@ -107,6 +108,29 @@ export default function ReportsPage() {
         }
     };
 
+    const handleDownloadBulkXML = async (ids: number[]) => {
+        try {
+            const res = await apiFetch(`/api/certificates/bulk-xml`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ids })
+            });
+
+            if (!res.ok) throw new Error('Download failed');
+
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `certificates_export_${Date.now()}.zip`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        } catch (e) {
+            alert('Błąd generowania ZIP');
+        }
+    };
+
     const handleSendSFTP = async (ids: number[]) => {
         // Check if any is already sent
         const anySent = certificates.some(c => ids.includes(c.id) && c.xmlWyslany);
@@ -134,6 +158,45 @@ export default function ReportsPage() {
             setSelectedIds([]); // Clear selection
         } catch (e) {
             alert('Błąd wysyłki SFTP');
+        }
+    };
+
+    const handleDownloadSingle = async (cert: Certificate) => {
+        try {
+            if (!cert.parsedData) return;
+
+            const formData = cert.parsedData;
+            // Mock result object
+            const result = {
+                skladkaCalkowita: formData.skladka,
+                skladkaAssistance: 0,
+                skladkaOC: 0,
+                skladkaNNW: 0,
+                latCalkowite: formData.periodDuration ? parseInt(formData.periodDuration) / 12 : 1
+            };
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const doc = <CertificateDocument
+                formData={formData}
+                result={result as any}
+                issuedNumber={cert.numerCertyfikatu}
+                signatureUrl={cert.user?.signatureUrl}
+            />;
+
+            const blob = await pdf(doc).toBlob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const cleanNum = cert.numerCertyfikatu.replace(/\//g, '_');
+            a.download = `Certyfikat_${cleanNum}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => window.URL.revokeObjectURL(url), 100);
+            document.body.removeChild(a);
+
+        } catch (e) {
+            console.error(e);
+            alert('Błąd generowania PDF');
         }
     };
 
@@ -233,6 +296,15 @@ export default function ReportsPage() {
                         </div>
                         <div className="flex gap-2">
                             <Button 
+                                onClick={() => handleDownloadBulkXML(selectedIds)} 
+                                disabled={selectedIds.length === 0}
+                                variant="outline"
+                                className="flex gap-2 text-blue-600 border-blue-600 hover:bg-blue-50"
+                            >
+                                <FileDown className="h-4 w-4" />
+                                Pobierz zaznaczone XML ({selectedIds.length})
+                            </Button>
+                            <Button 
                                 onClick={() => handleSendSFTP(selectedIds)} 
                                 disabled={selectedIds.length === 0}
                                 className="bg-green-600 hover:bg-green-700 text-white flex gap-2"
@@ -297,6 +369,9 @@ export default function ReportsPage() {
                                         )}
                                     </td>
                                     <td className="px-6 py-4 text-right flex justify-end gap-1">
+                                        <Button variant="ghost" size="sm" onClick={() => handleDownloadSingle(cert)} title="Pobierz PDF (Certyfikat)">
+                                            <Download className="h-5 w-5 text-indigo-600" />
+                                        </Button>
                                         <Button variant="ghost" size="sm" onClick={() => handleDownloadSignedDeclaration(cert)} title="Pobierz Podpisaną Deklarację">
                                             <FileSignature className="h-5 w-5 text-purple-600" />
                                         </Button>

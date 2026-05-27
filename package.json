@@ -1,5 +1,5 @@
 {
-  "name": "antigravity-monorepo",
+  "name": "truck-calc-monorepo",
   "private": true,
   "workspaces": [
     "frontend",

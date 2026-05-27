@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwtkey_antigravity';
+const JWT_SECRET = process.env.JWT_SECRET || 'supersecretjwtkey_truckcalc';
 
 export interface AuthRequest extends Request {
     user?: { id: number; username: string; role: string };
