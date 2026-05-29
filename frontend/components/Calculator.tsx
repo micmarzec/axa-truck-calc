@@ -194,7 +194,10 @@ export default function CalculatorComponent() {
                         setCalcVersionInfo({ version: data.version, status });
 
                         if (data.daneKlienta) {
-                            try { setFormData(JSON.parse(data.daneKlienta)); } catch(e){}
+                            try { 
+                                const parsed = JSON.parse(data.daneKlienta);
+                                setFormData(prev => ({ ...prev, ...parsed }));
+                            } catch(e){}
                         }
                         if (data.wynikKalkulacji) {
                             try { setResult(JSON.parse(data.wynikKalkulacji)); } catch(e){}
