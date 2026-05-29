@@ -1,7 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -15,14 +13,17 @@
 
 # next.js
 .next/
-/out/
+out/
 
 # production
-/build
+build/
+backend/dist/
 
 # misc
 .DS_Store
 *.pem
+Paczka/
+backend/public/signatures/
 
 # debug
 npm-debug.log*
