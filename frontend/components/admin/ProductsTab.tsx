@@ -17,12 +17,9 @@ interface Product {
     commissionT6Z: number;
     commissionT10Z: number;
     active: boolean;
-}
-
     validFrom: string;
     validTo: string | null;
 }
-
 export function ProductsTab() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
