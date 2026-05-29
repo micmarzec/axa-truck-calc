@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { getUser, logout } from '@/lib/api';
 import { Button } from './ui/Button';
 import Link from 'next/link';
-import { Calculator, BarChart3, FileSpreadsheet, Users, KeyRound, LogOut, History } from 'lucide-react';
+import { Calculator, BarChart3, FileSpreadsheet, Users, KeyRound, LogOut, History, Settings } from 'lucide-react';
 
 export default function AuthWrapper({ children }: { children: React.ReactNode }) {
     const [isLoading, setIsLoading] = useState(true);
