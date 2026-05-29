@@ -4,9 +4,9 @@
   --color-background: hsl(220 30% 98%);
   --color-foreground: hsl(222 47% 11%);
 
-  /* Pekao Red: #D01F2F -> HSL approx 354 74% 47% */
-  --color-primary: hsl(354 74% 47%);
-  --color-primary-foreground: hsl(210 40% 98%);
+  /* AXA Blue: #00008F -> HSL approx 240 100% 28% */
+  --color-primary: hsl(240 100% 28%);
+  --color-primary-foreground: hsl(0 0% 100%);
 
   --color-card: hsl(0 0% 100%);
   --color-card-foreground: hsl(222 47% 11%);
@@ -22,7 +22,8 @@
 
   --color-border: hsl(214.3 31.8% 91.4%);
   --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(354 74% 47%);
+  /* AXA Red: #FF1721 -> HSL approx 357 100% 55% */
+  --color-ring: hsl(357 100% 55%);
 
   --radius-lg: 0.75rem;
   --radius: 0.75rem;

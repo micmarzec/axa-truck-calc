@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Font, Image } from '@react-pdf/renderer';
-import { CalculationResult } from '@/lib/calculator';
+import { CalculationResult } from '@/components/Calculator';
 
 // Register Roboto to ensure Polish characters support
 Font.register({

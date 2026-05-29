@@ -19,7 +19,10 @@ model Certificate {
   xmlWyslany      Boolean  @default(false)
   
   userId          Int?
-  user            User?    @relation(fields: [userId], references: [id])
+  user            User?    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  calculationId   Int?
+  calculation     Calculation? @relation(fields: [calculationId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model User {
@@ -30,4 +33,42 @@ model User {
   signatureUrl String?
   createdAt DateTime @default(now())
   certificates Certificate[]
+  calculations Calculation[]
+}
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  name      String   // Removed @unique to allow versioning ("Basic", "Top", "Best+")
+  code      String   // "01", "02", "03"
+  priceT6Z      Float
+  priceT10Z     Float
+  commissionT6Z Float    @default(0.0)
+  commissionT10Z Float   @default(0.0)
+  active        Boolean  @default(true)
+  validFrom     DateTime @default(now())
+  validTo       DateTime?
+
+  // documents     ProductDocument[] - usunięte powiązanie
+}
+
+model Document {
+  id          Int      @id @default(autoincrement())
+  type        String   // 'OWU_SWU' lub 'IPID'
+  fileUrl     String   // Sciezka do pliku
+  validFrom   DateTime // Data obowiazywania
+  createdAt   DateTime @default(now())
+}
+
+model Calculation {
+  id               Int      @id @default(autoincrement())
+  groupId          String   // Grupowanie wersji (uuid)
+  version          Int      @default(1)
+  daneKlienta      String   @db.Text // formData JSON
+  wynikKalkulacji  String   @db.Text // calculation result JSON
+  userId           Int
+  user             User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdAt        DateTime @default(now())
+  validUntil       DateTime
+  
+  certificates     Certificate[]
 }

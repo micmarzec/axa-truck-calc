@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { apiFetch, getUser } from "@/lib/api"
-export type PackageType = 'Basic' | 'Top' | 'Best+';
+export type PackageType = string;
 
 export interface CalculationResult {
     latCalkowite: number;
@@ -24,7 +24,7 @@ import { Input } from "./ui/Input"
 import { Label } from "./ui/Primitives"
 import { Select } from "./ui/Primitives"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Primitives"
-import { Calculator, FileText, Send, CheckCircle, AlertCircle } from "lucide-react"
+import { Calculator, FileText, Send, CheckCircle, AlertCircle, Clock, Mail } from "lucide-react"
 
 import { pdf } from "@react-pdf/renderer"
 import { DeclarationDocument } from "./documents/DeclarationDocument"
@@ -106,7 +106,8 @@ export default function CalculatorComponent() {
         return val.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
 
-    const formatDuration = (years: number): string => {
+    const formatDuration = (years: number | undefined): string => {
+        if (years === undefined || years === null) return "Brak danych";
         // Strip trailing zeros if integer
         const val = parseFloat(years.toFixed(2));
 
@@ -141,20 +142,65 @@ export default function CalculatorComponent() {
         opcjaUbez: "" as PackageType | "",
         dataOd: getTomorrow(),
         periodDuration: "12", // Default 12 months
-        dataDo: "" // Calculated automatically
+        dataDo: "", // Calculated automatically
+        telefon: "",
+        email: "",
+        zgodaEmail: false,
+        zgodaTelefon: false,
+        zgodaKorespondencja: false
     })
 
     const [result, setResult] = useState<CalculationResult | null>(null)
     const [errors, setErrors] = useState<string[]>([])
+    const [products, setProducts] = useState<{id: number, name: string, active: boolean}[]>([])
     const [isGenerating, setIsGenerating] = useState(false)
     const [isSending, setIsSending] = useState(false)
     const [issuedNumber, setIssuedNumber] = useState<string | null>(null)
     const [isAdmin, setIsAdmin] = useState(false)
 
+    // Versioning state
+    const [currentCalcId, setCurrentCalcId] = useState<number | null>(null);
+    const [currentGroupId, setCurrentGroupId] = useState<string | null>(null);
+    const [calcVersionInfo, setCalcVersionInfo] = useState<{ version: number, status: string } | null>(null);
+
     useEffect(() => {
         const u = getUser();
         if (u && (u.role === 'ADMIN' || u.role === 'ROZLICZENIA')) {
             setIsAdmin(true);
+        }
+        
+        // Fetch products
+        apiFetch('/api/products')
+            .then(res => res.json())
+            .then(data => {
+                if (Array.isArray(data)) setProducts(data);
+            })
+            .catch(console.error);
+
+        // Load calc from URL
+        const params = new URLSearchParams(window.location.search);
+        const calcIdParam = params.get('calcId');
+        if (calcIdParam) {
+            apiFetch(`/api/calculations/${calcIdParam}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.id) {
+                        setCurrentCalcId(data.id);
+                        setCurrentGroupId(data.groupId);
+                        
+                        let status = "Ważna";
+                        if (data.certificates?.length > 0) status = "Wystawiono Certyfikat";
+                        else if (new Date() > new Date(data.validUntil)) status = "Wygasła";
+                        setCalcVersionInfo({ version: data.version, status });
+
+                        if (data.daneKlienta) {
+                            try { setFormData(JSON.parse(data.daneKlienta)); } catch(e){}
+                        }
+                        if (data.wynikKalkulacji) {
+                            try { setResult(JSON.parse(data.wynikKalkulacji)); } catch(e){}
+                        }
+                    }
+                });
         }
     }, []);
 
@@ -197,6 +243,8 @@ export default function CalculatorComponent() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target
 
+        if (currentCalcId) setCurrentCalcId(null); // Data changed, detach from saved version
+
         // Auto-format Zip Code: XX-XXX
         if (name === "firmaKod") {
             const digits = value.replace(/\D/g, '').slice(0, 5);
@@ -218,10 +266,16 @@ export default function CalculatorComponent() {
             return;
         }
 
+        if (e.target.type === "checkbox") {
+            setFormData(prev => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }));
+            return;
+        }
+
         setFormData(prev => ({ ...prev, [name]: value }))
     }
 
     const handleCalculate = async () => {
+        if (currentCalcId) setCurrentCalcId(null);
         setErrors([])
         const errs: string[] = []
 
@@ -375,6 +429,29 @@ export default function CalculatorComponent() {
         setIsGenerating(true)
 
         try {
+            if (type === 'deklaracja' || type === 'podpisana-deklaracja') {
+                if (!currentCalcId) {
+                    const saveRes = await apiFetch('/api/calculations', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            formData,
+                            calculation: result,
+                            parentGroupId: currentGroupId
+                        })
+                    });
+                    if (saveRes.ok) {
+                        const savedData = await saveRes.json();
+                        setCurrentCalcId(savedData.id);
+                        setCurrentGroupId(savedData.groupId);
+                        setCalcVersionInfo({ version: savedData.version, status: 'Ważna' });
+                    } else {
+                        const errData = await saveRes.json().catch(() => ({}));
+                        throw new Error(errData.error || `Serwer odrzucił zapis kalkulacji (status: ${saveRes.status}).`);
+                    }
+                }
+            }
+
             // Use @react-pdf/renderer
             const u = getUser();
             const MyDocument = type === 'deklaracja'
@@ -487,7 +564,7 @@ export default function CalculatorComponent() {
             const res = await apiFetch(`/api/certificates`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ formData: payload })
+                body: JSON.stringify({ formData: payload, calculationId: currentCalcId })
             });
 
             // Handle non-JSON response (e.g. 500 page from Next.js)
@@ -533,6 +610,60 @@ export default function CalculatorComponent() {
         }
     }
 
+    const handleSendEmail = async () => {
+        if (!formData.telefon || !formData.email) {
+            openAlert('Brak danych', 'Podaj E-mail i Telefon w sekcji "Dane kontaktowe".', 'danger');
+            return;
+        }
+        if (!currentCalcId) {
+            openAlert("Wymagany zapis", "Najpierw wygeneruj Deklarację, aby zapisać kalkulację.", "danger");
+            return;
+        }
+
+        setIsSending(true);
+        try {
+            await apiFetch('/api/sms/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ telefon: formData.telefon })
+            });
+
+            setModal({
+                isOpen: true,
+                title: "Weryfikacja SMS",
+                content: (
+                    <div className="space-y-4 pt-2">
+                        <p className="text-sm">Wysłano kod weryfikacyjny na numer: <span className="font-bold">{formData.telefon}</span>.</p>
+                        <p className="text-sm text-gray-500 italic">Do testów wpisz dowolny kod (hasłem do załączników będzie zawsze 0000).</p>
+                        <Input placeholder="Kod z SMS (np. 1234)" autoFocus />
+                    </div>
+                ),
+                confirmText: "Weryfikuj i Wyślij",
+                onConfirm: async () => {
+                    closeModal();
+                    try {
+                        const res = await apiFetch('/api/email/send', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email: formData.email, calcId: currentCalcId })
+                        });
+                        if (res.ok) {
+                            openAlert('Wysłano!', `Wiadomość została wysłana na adres ${formData.email}. Załączniki (OWU, IPID, Deklaracja/Certyfikat) zostały zabezpieczone hasłem z SMS.`, 'success');
+                        } else {
+                            throw new Error('Server returned error');
+                        }
+                    } catch (e) {
+                        openAlert('Błąd', 'Nie udało się wysłać e-maila', 'danger');
+                    }
+                }
+            });
+        } catch (e) {
+            openAlert('Błąd', 'Nie udało się wysłać SMS z kodem', 'danger');
+        } finally {
+            setIsSending(false);
+        }
+    };
+
     const handleIssueCertificate = async () => {
         // 1. Validation
         let allErrors: string[] = [];
@@ -549,6 +680,11 @@ export default function CalculatorComponent() {
                 'danger'
             );
             return;
+        }
+
+        if (!currentCalcId) {
+             openAlert("Wymagany zapis", "Aby wystawić certyfikat, musisz najpierw wygenerować Deklarację, co zapisze nową wersję kalkulacji w systemie.", "danger");
+             return;
         }
 
         // 2. Confirmation Modal
@@ -645,9 +781,9 @@ export default function CalculatorComponent() {
                             <Label>Wariant</Label>
                             <Select name="opcjaUbez" value={formData.opcjaUbez} onChange={handleChange}>
                                 <option value="">-- Wybierz Wariant --</option>
-                                <option value="Basic">Basic</option>
-                                <option value="Top">Top</option>
-                                <option value="Best+">Best+</option>
+                                {products.filter(p => p.active).map(p => (
+                                    <option key={p.id} value={p.name}>{p.name}</option>
+                                ))}
                             </Select>
                         </div>
                         <div className="space-y-2">
@@ -686,10 +822,75 @@ export default function CalculatorComponent() {
 
                     </CardContent>
                 </Card>
+
+                <Card className="premium-card">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-primary">
+                            <Mail className="h-5 w-5" />
+                            Dane kontaktowe (Opcjonalnie)
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid gap-4 md:grid-cols-2">
+                        <div className="space-y-2">
+                            <Label>Telefon (do SMS)</Label>
+                            <Input name="telefon" placeholder="np. 48123456789" value={formData.telefon} onChange={handleChange} />
+                        </div>
+                        <div className="space-y-2">
+                            <Label>Adres E-mail</Label>
+                            <Input name="email" type="email" placeholder="np. biuro@firma.pl" value={formData.email} onChange={handleChange} />
+                        </div>
+                        <div className="md:col-span-2 text-xs text-muted-foreground pt-1 pb-2">
+                            Pola wymagane tylko do wysyłki dokumentów i hasła zabezpieczającego. Hasło domyślne na czas testów: 0000.
+                        </div>
+
+                        <div className="md:col-span-2 border-t pt-4 space-y-4">
+                            <div className="text-sm">
+                                <span className="font-bold">Wyrażam zgodę na wykorzystanie przez Ubezpieczyciela podanego przeze mnie:</span>
+                                <div className="mt-2 space-y-2">
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" name="zgodaEmail" checked={formData.zgodaEmail} onChange={handleChange} className="w-4 h-4 rounded border-gray-300" />
+                                        <span>adresu e-mail</span>
+                                    </label>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" name="zgodaTelefon" checked={formData.zgodaTelefon} onChange={handleChange} className="w-4 h-4 rounded border-gray-300" />
+                                        <span>numeru telefonu</span>
+                                    </label>
+                                </div>
+                                <div className="mt-2 text-xs text-muted-foreground">
+                                    do celów marketingowych w celu prezentacji produktów i usług Ubezpieczyciela.
+                                </div>
+                            </div>
+
+                            <div className="text-sm pt-2">
+                                <label className="flex items-start gap-2 cursor-pointer">
+                                    <input type="checkbox" name="zgodaKorespondencja" checked={formData.zgodaKorespondencja} onChange={handleChange} className="w-4 h-4 mt-0.5 rounded border-gray-300 shrink-0" />
+                                    <span>Wyrażam zgodę na otrzymywanie drogą elektroniczną wszelkiej korespondencji dotyczącej ubezpieczenia w tym dotyczących zgłoszenia szkód i reklamacji.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
 
             {/* Sidebar / Result Section */}
             <div className="space-y-6">
+                {calcVersionInfo && (
+                    <div className={`p-4 rounded-md border text-sm font-medium flex items-start gap-3 ${
+                        calcVersionInfo.status === 'Ważna' ? 'bg-blue-50 border-blue-200 text-blue-800' :
+                        calcVersionInfo.status === 'Wystawiono Certyfikat' ? 'bg-green-50 border-green-200 text-green-800' :
+                        'bg-red-50 border-red-200 text-red-800'
+                    }`}>
+                        {calcVersionInfo.status === 'Ważna' ? <Clock className="w-5 h-5 shrink-0" /> :
+                         calcVersionInfo.status === 'Wystawiono Certyfikat' ? <CheckCircle className="w-5 h-5 shrink-0" /> :
+                         <AlertCircle className="w-5 h-5 shrink-0" />}
+                        <div>
+                            <div className="font-bold">Wersja Kalkulacji: {calcVersionInfo.version}</div>
+                            <div>Status: {calcVersionInfo.status}</div>
+                            {currentCalcId === null && <div className="text-xs mt-1 text-gray-500 font-normal">Zmieniono dane. Generowanie deklaracji utworzy nową wersję.</div>}
+                        </div>
+                    </div>
+                )}
+
                 <Card className="premium-card sticky top-6 border-primary/20 shadow-xl overflow-hidden">
                     <div className="bg-primary/10 p-4 border-b border-primary/10">
                         <h2 className="font-bold text-lg text-primary">Podsumowanie</h2>
@@ -716,11 +917,11 @@ export default function CalculatorComponent() {
                                 <div className="border-t pt-4">
                                     <div className="flex justify-between items-baseline mb-1">
                                         <span className="font-medium text-lg">Składka Łączna</span>
-                                        <span className="font-extrabold text-2xl text-primary">{formatCurrency(result.skladkaCalkowita)} PLN</span>
+                                        <span className="font-extrabold text-2xl text-primary">{formatCurrency(result.skladkaCalkowita || (result as any).skladka || 0)} PLN</span>
                                     </div>
                                     <div className="flex justify-between items-baseline text-sm text-muted-foreground">
                                         <span>Miesięcznie (szacunek)</span>
-                                        <span>{formatCurrency(result.kosztMiesieczny)} PLN</span>
+                                        <span>{formatCurrency(result.kosztMiesieczny || 0)} PLN</span>
                                     </div>
                                 </div>
 
@@ -768,6 +969,16 @@ export default function CalculatorComponent() {
                                             </Button>
                                         </div>
                                     )}
+                                    <div className="pt-2 border-t mt-2">
+                                        <Button 
+                                            className="w-full bg-blue-600 hover:bg-blue-700 text-white gap-2" 
+                                            onClick={handleSendEmail} 
+                                            disabled={isSending || isGenerating}
+                                        >
+                                            <Mail className="w-4 h-4" />
+                                            Wyślij dokumenty na e-mail
+                                        </Button>
+                                    </div>
                                     {isAdmin && (
                                         <>
                                             <div className="flex gap-2">

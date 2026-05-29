@@ -7,7 +7,7 @@ exports.AppConfig = {
     // Note: Prisma natively uses the DATABASE_URL from the .env file, 
     // but we expose the environment variable here for manual queries or API usage if needed.
     database: {
-        url: process.env.DATABASE_URL || 'sqlserver://localhost:1433;database=AntigravityDB;user=sa;password=Password123!;encrypt=true;trustServerCertificate=true',
+        url: process.env.DATABASE_URL || 'sqlserver://localhost:1433;database=TruckCalcDB;user=sa;password=Password123!;encrypt=true;trustServerCertificate=true',
         provider: 'sqlserver',
     },
     // Insurance product mappings and configurations

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Font, Image } from '@react-pdf/renderer';
-import { CalculationResult } from '@/lib/calculator';
+import { CalculationResult } from '@/components/Calculator';
 
 // Register Roboto to ensure Polish characters support (Arial-like)
 Font.register({
@@ -156,6 +156,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#000',
         marginRight: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     footerSignature: {
@@ -326,8 +328,14 @@ export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, resu
                             na wykorzystanie przez Ubezpieczyciela podanego przeze mnie:
                         </Text>
                         <View style={styles.checkboxGroup}>
-                            <View style={styles.checkboxRow}><View style={styles.box} /><Text style={{ fontSize: 8 }}>adresu e-mail</Text></View>
-                            <View style={styles.checkboxRow}><View style={styles.box} /><Text style={{ fontSize: 8 }}>numeru telefonu</Text></View>
+                            <View style={styles.checkboxRow}>
+                                <View style={styles.box}><Text style={{ fontSize: 7, fontWeight: 'bold' }}>{formData.zgodaEmail ? 'X' : ' '}</Text></View>
+                                <Text style={{ fontSize: 8 }}>adresu e-mail</Text>
+                            </View>
+                            <View style={styles.checkboxRow}>
+                                <View style={styles.box}><Text style={{ fontSize: 7, fontWeight: 'bold' }}>{formData.zgodaTelefon ? 'X' : ' '}</Text></View>
+                                <Text style={{ fontSize: 8 }}>numeru telefonu</Text>
+                            </View>
                         </View>
 
                         <Text style={[styles.legalPara, { marginTop: 4, marginBottom: 1 }]}>
@@ -343,8 +351,10 @@ export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, resu
                             na otrzymywanie drogą elektroniczną wszelkiej korespondencji dotyczącej ubezpieczenia w tym dotyczących zgłoszenia szkód i reklamacji.
                         </Text>
                         <View style={[styles.checkboxRow, { marginTop: 2, marginLeft: 0 }]}>
-                            <View style={styles.box} /><Text style={{ fontSize: 8, marginRight: 50 }}>TAK</Text>
-                            <View style={styles.box} /><Text style={{ fontSize: 8 }}>NIE</Text>
+                            <View style={styles.box}><Text style={{ fontSize: 7, fontWeight: 'bold' }}>{formData.zgodaKorespondencja ? 'X' : ' '}</Text></View>
+                            <Text style={{ fontSize: 8, marginRight: 50 }}>TAK</Text>
+                            <View style={styles.box}><Text style={{ fontSize: 7, fontWeight: 'bold' }}>{!formData.zgodaKorespondencja ? 'X' : ' '}</Text></View>
+                            <Text style={{ fontSize: 8 }}>NIE</Text>
                         </View>
                     </View>
                 </View>

@@ -3,8 +3,8 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     
-    const headers: HeadersInit = {
-        ...options.headers,
+    const headers: Record<string, string> = {
+        ...(options.headers as Record<string, string>),
     };
 
     if (token) {

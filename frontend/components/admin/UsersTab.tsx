@@ -18,7 +18,7 @@ interface User {
     createdAt: string;
 }
 
-export default function UsersPage() {
+export function UsersTab() {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -173,13 +173,7 @@ export default function UsersPage() {
     if (loading) return <div className="p-10 text-center">Ładowanie...</div>;
 
     return (
-        <div className="max-w-6xl mx-auto space-y-8 animate-fade-in">
-            <div className="flex items-center gap-4">
-                <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-                    <Users className="h-8 w-8 text-primary" />
-                    Zarządzanie Użytkownikami
-                </h1>
-            </div>
+        <div className="space-y-8 animate-fade-in">
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 

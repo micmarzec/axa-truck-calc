@@ -22,6 +22,7 @@ interface Certificate {
     parsedData?: any;
     user?: {
         username?: string;
+        signatureUrl?: string;
     };
 }
 

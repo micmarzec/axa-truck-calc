@@ -2,9 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import multer from 'multer';
 import path from 'path';
 import { prisma } from './lib/prisma';
 import { generateXML, XMLData } from './lib/xml-generator';
+import crypto from 'crypto';
 import { uploadFileToSFTP } from './lib/sftp-client';
 import { calculatePremium, PackageType } from './lib/calculator';
 import { authenticateToken, requireAdmin } from './middleware/auth';
@@ -14,11 +16,36 @@ import JSZip from 'jszip';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 
+declare global {
+    namespace Express {
+        interface Request {
+            user?: { id: number; username: string; role: string };
+        }
+    }
+}
+
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
+
+// Set up multer for document uploads
+const documentsDir = path.join(__dirname, '..', 'uploads', 'documents');
+if (!fs.existsSync(documentsDir)) {
+    fs.mkdirSync(documentsDir, { recursive: true });
+}
+const documentStorage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, documentsDir),
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+    }
+});
+const uploadDocument = multer({ storage: documentStorage });
+
+// Serve documents
+app.use('/uploads/documents', express.static(documentsDir));
 
 const swaggerOptions = {
     definition: {
@@ -59,8 +86,8 @@ app.use('/signatures', express.static(signaturesDir, {
     }
 }));
 
-// --- SEED ADMIN ---
-async function seedAdmin() {
+// --- SEED DATA ---
+async function seedData() {
     try {
         const adminUser = await prisma.user.findUnique({ where: { username: 'mmarzec' } });
         if (!adminUser) {
@@ -74,11 +101,24 @@ async function seedAdmin() {
             });
             console.log('Utworzono domyślnego administratora: mmarzec');
         }
+
+        // Seed Products
+        const productsCount = await prisma.product.count();
+        if (productsCount === 0) {
+            await prisma.product.createMany({
+                data: [
+                    { name: 'Basic', code: '01', priceT6Z: 535, priceT10Z: 535, commissionT6Z: 0, commissionT10Z: 0 },
+                    { name: 'Top', code: '02', priceT6Z: 2490, priceT10Z: 3155, commissionT6Z: 0, commissionT10Z: 0 },
+                    { name: 'Best+', code: '03', priceT6Z: 3050, priceT10Z: 4130, commissionT6Z: 0, commissionT10Z: 0 }
+                ]
+            });
+            console.log('Utworzono domyślne pakiety ubezpieczeniowe.');
+        }
     } catch (e) {
-        console.error('Błąd podczas tworzenia admina (zignoruj, jeśli brakuje tabeli):', e);
+        console.error('Błąd podczas inicjalizacji bazy:', e);
     }
 }
-seedAdmin();
+seedData();
 
 // --- AUTHENTICATION ROUTES ---
 /**
@@ -109,6 +149,174 @@ app.post('/api/auth/login', async (req, res) => {
         console.error('Login Error:', error);
         res.status(500).json({ error: 'Błąd logowania' });
     }
+});
+
+// --- PRODUCT MANAGEMENT ROUTES ---
+/**
+ * @swagger
+ * /api/products:
+ *   get:
+ *     summary: Lista produktów ubezpieczeniowych
+ *     tags: [products]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
+app.get('/api/products', async (req, res) => {
+    try {
+        const isAdmin = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
+        let products;
+        
+        if (isAdmin) {
+            // Admins see all versions, sorted by name and validity
+            products = await prisma.product.findMany({ 
+                orderBy: [
+                    { name: 'asc' },
+                    { validFrom: 'desc' }
+                ] 
+            });
+        } else {
+            // Users and calculator only see currently valid tariffs
+            const now = new Date();
+            products = await prisma.product.findMany({ 
+                where: {
+                    active: true,
+                    validFrom: { lte: now },
+                    OR: [
+                        { validTo: null },
+                        { validTo: { gt: now } }
+                    ]
+                },
+                orderBy: { id: 'asc' } 
+            });
+        }
+        
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch products' });
+    }
+});
+
+/**
+ * @swagger
+ * /api/products/:id:
+ *   put:
+ *     summary: Aktualizacja produktu (tworzy nową wersję)
+ *     tags: [products]
+ */
+app.put('/api/products/:id', authenticateToken, requireAdmin, async (req, res) => {
+    try {
+        const id = parseInt(req.params.id, 10);
+        const { priceT6Z, priceT10Z, commissionT6Z, commissionT10Z, active, validFrom } = req.body;
+        
+        const oldProduct = await prisma.product.findUnique({ where: { id } });
+        if (!oldProduct) return res.status(404).json({ error: 'Not found' });
+
+        const newValidFrom = validFrom ? new Date(validFrom) : new Date();
+
+        // Zamknięcie starej wersji
+        await prisma.product.update({
+            where: { id },
+            data: { validTo: newValidFrom }
+        });
+
+        // Utworzenie nowej wersji
+        const newProduct = await prisma.product.create({
+            data: {
+                name: oldProduct.name,
+                code: oldProduct.code,
+                priceT6Z: parseFloat(priceT6Z), 
+                priceT10Z: parseFloat(priceT10Z), 
+                commissionT6Z: parseFloat(commissionT6Z),
+                commissionT10Z: parseFloat(commissionT10Z),
+                active: Boolean(active),
+                validFrom: newValidFrom
+            }
+        });
+
+        res.json(newProduct);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update product' });
+    }
+});
+
+// --- DOCUMENTS ENDPOINTS ---
+app.post('/api/documents', authenticateToken, requireAdmin, uploadDocument.single('file'), async (req, res) => {
+    try {
+        const { type, validFrom } = req.body;
+        
+        if (!req.file || !type || !validFrom) {
+            return res.status(400).json({ error: 'Missing data' });
+        }
+
+        const doc = await prisma.document.create({
+            data: {
+                type,
+                validFrom: new Date(validFrom),
+                fileUrl: `/uploads/documents/${req.file.filename}`
+            }
+        });
+
+        res.json(doc);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ error: 'Upload failed' });
+    }
+});
+
+app.get('/api/documents', authenticateToken, async (req, res) => {
+    try {
+        const docs = await prisma.document.findMany({
+            orderBy: { validFrom: 'desc' }
+        });
+        res.json(docs);
+    } catch (e) {
+        res.status(500).json({ error: 'Failed' });
+    }
+});
+
+app.delete('/api/documents/:docId', authenticateToken, requireAdmin, async (req, res) => {
+    try {
+        const id = parseInt(req.params.docId);
+        const doc = await prisma.document.findUnique({ where: { id } });
+        if (doc) {
+            const filepath = path.join(__dirname, '..', doc.fileUrl);
+            if (fs.existsSync(filepath)) fs.unlinkSync(filepath);
+            await prisma.document.delete({ where: { id } });
+        }
+        res.json({ success: true });
+    } catch (e) {
+        res.status(500).json({ error: 'Failed to delete' });
+    }
+});
+
+// --- EMAIL / SMS MOCKS ---
+app.post('/api/sms/send', authenticateToken, async (req, res) => {
+    const { telefon } = req.body;
+    console.log(`[MOCK SMS] Wysłano kod: 0000 na numer: ${telefon}`);
+    res.json({ success: true });
+});
+
+app.post('/api/email/send', authenticateToken, async (req, res) => {
+    const { email, calcId } = req.body;
+    
+    let attachmentsLog = 'brak';
+    if (calcId) {
+        const calc = await prisma.calculation.findUnique({ where: { id: Number(calcId) } });
+        if (calc) {
+            const documents = await prisma.document.findMany({
+                where: { validFrom: { lte: calc.createdAt } },
+                orderBy: { validFrom: 'desc' }
+            });
+            const owu = documents.find(d => d.type === 'OWU_SWU');
+            const ipid = documents.find(d => d.type === 'IPID');
+            attachmentsLog = `OWU: ${owu?.fileUrl || 'brak'}, IPID: ${ipid?.fileUrl || 'brak'}`;
+        }
+    }
+
+    console.log(`[MOCK EMAIL] Wysłano maila do: ${email} dla kalkulacji/certyfikatu: ${calcId}`);
+    console.log(`[MOCK EMAIL] Załączniki (${attachmentsLog}) zabezpieczone hasłem: 0000`);
+    res.json({ success: true });
 });
 
 // --- USER MANAGEMENT ROUTES (ADMIN ONLY) ---
@@ -314,7 +522,7 @@ app.post('/api/users/:id/signature', authenticateToken, requireAdmin, async (req
  *       200:
  *         description: Sukces
  */
-app.post('/api/calculate', (req, res) => {
+app.post('/api/calculate', async (req, res) => {
     try {
         const { wiekPojazdu, opcja, dataOd, dataDo } = req.body;
         
@@ -322,9 +530,13 @@ app.post('/api/calculate', (req, res) => {
             return res.status(400).json({ error: 'Missing calculation parameters' });
         }
 
+        const product = await prisma.product.findUnique({ where: { name: opcja } });
+        if (!product) return res.status(404).json({ error: 'Product not found' });
+
         const result = calculatePremium(
             wiekPojazdu,
-            opcja as PackageType,
+            product.priceT6Z,
+            product.priceT10Z,
             new Date(dataOd),
             new Date(dataDo)
         );
@@ -333,6 +545,107 @@ app.post('/api/calculate', (req, res) => {
     } catch (error) {
         console.error('Calculation Error:', error);
         res.status(500).json({ error: 'Failed to calculate premium' });
+    }
+});
+
+// --- CALCULATIONS ROUTES ---
+/**
+ * @swagger
+ * /api/calculations:
+ *   post:
+ *     summary: Zapisz kalkulację
+ *     tags: [calculations]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
+app.post('/api/calculations', authenticateToken, async (req, res) => {
+    try {
+        const { formData, calculation, parentGroupId } = req.body;
+        if (!formData || !calculation) return res.status(400).json({ error: 'Missing data' });
+
+        let groupId = parentGroupId;
+        let version = 1;
+
+        if (groupId) {
+            const maxCalc = await prisma.calculation.findFirst({
+                where: { groupId },
+                orderBy: { version: 'desc' }
+            });
+            if (maxCalc) {
+                version = maxCalc.version + 1;
+            } else {
+                groupId = crypto.randomUUID();
+            }
+        } else {
+            groupId = crypto.randomUUID();
+        }
+
+        const validUntil = new Date();
+        validUntil.setDate(validUntil.getDate() + 60);
+
+        const newCalc = await prisma.calculation.create({
+            data: {
+                groupId,
+                version,
+                daneKlienta: JSON.stringify(formData),
+                wynikKalkulacji: JSON.stringify(calculation),
+                userId: req.user!.id || (req.user as any).userId || 1,
+                validUntil
+            }
+        });
+
+        res.json(newCalc);
+    } catch (error) {
+        console.error('Calculation Save Error:', error);
+        res.status(500).json({ error: `Failed to save calculation: ${error instanceof Error ? error.message : String(error)}` });
+    }
+});
+
+/**
+ * @swagger
+ * /api/calculations:
+ *   get:
+ *     summary: Pobierz listę kalkulacji
+ *     tags: [calculations]
+ *     responses:
+ *       200:
+ *         description: Sukces
+ */
+app.get('/api/calculations', authenticateToken, async (req, res) => {
+    try {
+        const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
+        const whereClause = isAdminOrBilling ? {} : { userId: req.user?.id };
+
+        const calculations = await prisma.calculation.findMany({
+            where: whereClause,
+            orderBy: { createdAt: 'desc' },
+            include: { user: { select: { username: true } }, certificates: { select: { id: true } } }
+        });
+
+        res.json(calculations);
+    } catch (error) {
+        console.error('Fetch calculations error:', error);
+        res.status(500).json({ error: 'Failed to fetch calculations' });
+    }
+});
+
+app.get('/api/calculations/:id', authenticateToken, async (req, res) => {
+    try {
+        const calc = await prisma.calculation.findUnique({
+            where: { id: parseInt(req.params.id) },
+            include: { certificates: true }
+        });
+        if (!calc) return res.status(404).json({ error: 'Not found' });
+        
+        // Security check
+        const isAdminOrBilling = req.user?.role === 'ADMIN' || req.user?.role === 'ROZLICZENIA';
+        if (!isAdminOrBilling && calc.userId !== req.user?.id) {
+            return res.status(403).json({ error: 'Access denied' });
+        }
+        res.json(calc);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch calculation' });
     }
 });
 
@@ -389,12 +702,34 @@ app.get('/api/certificates', authenticateToken, async (req, res) => {
 // POST /api/certificates
 app.post('/api/certificates', authenticateToken, async (req, res) => {
     try {
-        const { formData } = req.body;
+        const { formData, calculationId } = req.body;
         if (!formData) return res.status(400).json({ error: 'Missing formData' });
+
+        if (calculationId) {
+            const calc = await prisma.calculation.findUnique({
+                where: { id: Number(calculationId) }
+            });
+
+            if (!calc) return res.status(404).json({ error: 'Kalkulacja nie znaleziona' });
+            
+            if (new Date() > calc.validUntil) {
+                return res.status(400).json({ error: 'Kalkulacja straciła ważność (minęło 60 dni). Wygeneruj nową.' });
+            }
+
+            const groupCalcs = await prisma.calculation.findMany({
+                where: { groupId: calc.groupId },
+                include: { certificates: true }
+            });
+
+            const hasCert = groupCalcs.some(c => c.certificates.length > 0);
+            if (hasCert) {
+                return res.status(400).json({ error: 'Certyfikat dla tej historii kalkulacji został już wystawiony.' });
+            }
+        }
 
         const user = await prisma.user.findUnique({ where: { id: req.user?.id } });
         if (!user || !user.signatureUrl) {
-            return res.status(403).json({ error: 'Brak dodanego podpisu na Twoim koncie. Skontaktuj się z administratorem, aby móc wystawiać certyfikaty.' });
+            return res.status(400).json({ error: 'Brak dodanego podpisu na Twoim koncie. Skontaktuj się z administratorem, aby móc wystawiać certyfikaty.' });
         }
 
         const isDoubleTariff = formData.latT6Z > 0 && formData.latT10Z > 0;
@@ -428,7 +763,8 @@ app.post('/api/certificates', authenticateToken, async (req, res) => {
                     numerCertyfikatu,
                     numerUmowy: formData.numerUmowy,
                     daneKlienta: JSON.stringify(formData),
-                    userId: req.user?.id
+                    userId: req.user?.id,
+                    calculationId: calculationId ? Number(calculationId) : null
                 }
             });
             numerCertyfikatu = cert.numerCertyfikatu; // Get final confirmed

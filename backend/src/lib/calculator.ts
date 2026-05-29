@@ -1,11 +1,7 @@
 
 export type PackageType = 'Basic' | 'Top' | 'Best+';
 
-export const PACKAGES: Record<PackageType, { T6Z: number; T10Z: number }> = {
-    Basic: { T6Z: 535, T10Z: 535 },
-    Top: { T6Z: 2490, T10Z: 3155 },
-    'Best+': { T6Z: 3050, T10Z: 4130 },
-};
+// Removed hardcoded PACKAGES
 
 export interface CalculationResult {
     latCalkowite: number;
@@ -34,7 +30,8 @@ export function obliczWiekPojazdu(dataRejestracji: Date, dataPoczatkowaPolisy: D
 
 export function calculatePremium(
     wiekPojazdu: number,
-    opcja: PackageType,
+    cenaT6Z: number,
+    cenaT10Z: number,
     dataOd: Date,
     dataDo: Date
 ): CalculationResult {
@@ -60,11 +57,6 @@ export function calculatePremium(
         latT6Z = 7 - wiekPojazdu;
         latT10Z = wiekKoncowy - 7;
     }
-
-    // Wyliczenie ceny
-    const ceny = PACKAGES[opcja];
-    const cenaT6Z = ceny?.T6Z || 0;
-    const cenaT10Z = ceny?.T10Z || 0;
 
     const skladkaT6Z = latT6Z * cenaT6Z;
     const skladkaT10Z = latT10Z * cenaT10Z;
