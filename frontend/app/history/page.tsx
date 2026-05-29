@@ -52,6 +52,7 @@ export default function HistoryPage() {
     const [dateTo, setDateTo] = useState('');
     const dateToRef = useRef<HTMLInputElement>(null);
     const [agents, setAgents] = useState<{ id: number, username: string }[]>([]);
+    const [settings, setSettings] = useState<any>(null);
     const [selectedAgentId, setSelectedAgentId] = useState<string>('');
     const [isAdminOrBilling, setIsAdminOrBilling] = useState(false);
 
@@ -73,6 +74,11 @@ export default function HistoryPage() {
                 })
                 .catch(() => {});
         }
+
+        apiFetch('/api/settings')
+            .then(res => res.json())
+            .then(data => setSettings(data))
+            .catch(console.error);
 
         fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -147,6 +153,7 @@ export default function HistoryPage() {
                 result={result as any}
                 issuedNumber={cert.numerCertyfikatu}
                 signatureUrl={cert.user?.signatureUrl}
+                settings={settings}
             />;
 
             const blob = await pdf(doc).toBlob();

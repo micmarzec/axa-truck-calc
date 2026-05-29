@@ -162,6 +162,7 @@ export default function CalculatorComponent() {
     const [currentCalcId, setCurrentCalcId] = useState<number | null>(null);
     const [currentGroupId, setCurrentGroupId] = useState<string | null>(null);
     const [calcVersionInfo, setCalcVersionInfo] = useState<{ version: number, status: string } | null>(null);
+    const [settings, setSettings] = useState<any>(null);
 
     useEffect(() => {
         const u = getUser();
@@ -175,6 +176,12 @@ export default function CalculatorComponent() {
             .then(data => {
                 if (Array.isArray(data)) setProducts(data);
             })
+            .catch(console.error);
+
+        // Fetch settings
+        apiFetch('/api/settings')
+            .then(res => res.json())
+            .then(data => setSettings(data))
             .catch(console.error);
 
         // Load calc from URL
@@ -458,10 +465,10 @@ export default function CalculatorComponent() {
             // Use @react-pdf/renderer
             const u = getUser();
             const MyDocument = type === 'deklaracja'
-                ? <DeclarationDocument formData={formData} result={result} />
+                ? <DeclarationDocument formData={formData} result={result} settings={settings} />
                 : type === 'certyfikat'
-                ? <CertificateDocument formData={formData} result={result} />
-                : <SignedDeclarationDocument formData={formData} result={result} signatureUrl={u?.signatureUrl} />;
+                ? <CertificateDocument formData={formData} result={result} settings={settings} />
+                : <SignedDeclarationDocument formData={formData} result={result} signatureUrl={u?.signatureUrl} settings={settings} />;
 
             const blob = await pdf(MyDocument).toBlob();
             const url = URL.createObjectURL(blob);
@@ -588,7 +595,7 @@ export default function CalculatorComponent() {
             setIssuedNumber(issuedNumber);
 
             // 4. Generate PDF with Issuance Number
-            const MyDocument = <CertificateDocument formData={formData} result={result} issuedNumber={issuedNumber} signatureUrl={signatureUrl} />;
+            const MyDocument = <CertificateDocument formData={formData} result={result} issuedNumber={issuedNumber} signatureUrl={signatureUrl} settings={settings} />;
 
             const blob = await pdf(MyDocument).toBlob();
             const url = URL.createObjectURL(blob);

@@ -191,9 +191,10 @@ interface DeclarationProps {
         [key: string]: any; // Allow other fields if necessary, or strict type
     };
     result: CalculationResult | null;
+    settings?: any;
 }
 
-export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, result }) => {
+export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, result, settings }) => {
     if (!result) return <Document><Page><Text>No Data</Text></Page></Document>;
 
     const val = (text: string) => text || "..........................";
@@ -212,7 +213,7 @@ export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, resu
                     />
                     <View style={styles.titleSection}>
                         <Text style={styles.titleMain}>Deklaracja przystąpienia do ubezpieczenia grupowego</Text>
-                        <Text style={styles.titleSub}>Truck Assistance dla Klientów Pekao Leasing</Text>
+                        <Text style={styles.titleSub}>Truck Assistance dla Klientów {settings?.partnerName || 'Pekao Leasing'}</Text>
                     </View>
                     <View style={styles.contractBox}>
                         <Text style={styles.contractLabel}>Numer Umowy</Text>
@@ -240,7 +241,7 @@ export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, resu
                     </View>
                     <View style={styles.sectionContentBox}>
                         <Text style={styles.sectionText}>
-                            Pekao Leasing Sp. z o.o. z siedzibą w Warszawie, ul. Żubra 1, 01-066 Warszawa, Polska, zarejestrowana w rejestrze przedsiębiorców prowadzonym przez Sąd Rejonowy dla M. St. Warszawy, XIII Wydział Gospodarczy Krajowego Rejestru Sądowego pod numerem KRS: 0000000867, REGON: 430560128, NIP: 7121016682.
+                            {settings?.partnerRegistryData || 'Pekao Leasing Sp. z o.o. z siedzibą w Warszawie, ul. Żubra 1, 01-066 Warszawa, Polska, zarejestrowana w rejestrze przedsiębiorców prowadzonym przez Sąd Rejonowy dla M. St. Warszawy, XIII Wydział Gospodarczy Krajowego Rejestru Sądowego pod numerem KRS: 0000000867, REGON: 430560128, NIP: 7121016682.'}
                         </Text>
                     </View>
                 </View>
@@ -248,7 +249,7 @@ export const DeclarationDocument: React.FC<DeclarationProps> = ({ formData, resu
                 {/* Partner */}
                 <View style={styles.sectionContainer}>
                     <View style={styles.sectionHeaderBox}>
-                        <Text style={styles.sectionTitle}>Partner Pekao Leasing – Korzystający w rozumieniu Umowy Finansowania</Text>
+                        <Text style={styles.sectionTitle}>Partner {settings?.partnerName || 'Pekao Leasing'} – Korzystający w rozumieniu Umowy Finansowania</Text>
                     </View>
                     <View style={styles.sectionContentBox}>
                         <View style={styles.fieldRow}>

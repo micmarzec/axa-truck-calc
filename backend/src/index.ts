@@ -836,6 +836,7 @@ app.post('/api/send-xml', authenticateToken, async (req, res) => {
             return res.status(400).json({ error: 'Missing data' });
         }
 
+        const settings = await prisma.systemSettings.findUnique({ where: { id: 1 } });
         const xml = generateXML({
             ...formData,
             pojazdVIN: formData.pojazdVIN || 'UNKNOWN',
@@ -847,11 +848,17 @@ app.post('/api/send-xml', authenticateToken, async (req, res) => {
             latT10Z: calculation?.latT10Z,
             skladkaT6Z: calculation?.skladkaT6Z,
             skladkaT10Z: calculation?.skladkaT10Z,
-            skladka: calculation?.skladkaCalkowita
+            skladka: calculation?.skladkaCalkowita,
+            xmlPartnerId: settings?.xmlPartnerId || 'PEKAO_TA'
         });
 
         const fileName = `Declaration_${formData.numerUmowy}_${Date.now()}.xml`;
-        await uploadFileToSFTP(fileName, xml);
+        await uploadFileToSFTP(fileName, xml, {
+            host: settings?.sftpHost,
+            port: settings?.sftpPort,
+            username: settings?.sftpUser,
+            password: settings?.sftpPassword
+        });
 
         res.json({ success: true, fileName });
     } catch (error) {
@@ -936,6 +943,7 @@ app.post('/api/certificates/bulk-send-sftp', authenticateToken, async (req, res)
         const certificates = await prisma.certificate.findMany({
             where: { id: { in: ids } }
         });
+        const settings = await prisma.systemSettings.findUnique({ where: { id: 1 } });
 
         let successCount = 0;
 
@@ -949,14 +957,20 @@ app.post('/api/certificates/bulk-send-sftp', authenticateToken, async (req, res)
                     dataZakonczenia: formData.dataDo,
                     wariant: formData.opcjaUbez,
                     dataPierwszejRejestracji: formData.pojazdDataRejestracji,
-                    pojazdVIN: formData.pojazdVIN || 'UNKNOWN'
+                    pojazdVIN: formData.pojazdVIN || 'UNKNOWN',
+                    xmlPartnerId: settings?.xmlPartnerId || 'PEKAO_TA'
                 };
 
                 const xmlContent = generateXML(xmlData);
                 const fileName = `Contract_${cert.numerCertyfikatu.replace(/\//g, '_')}.xml`;
                 
                 // Upload via SFTP
-                await uploadFileToSFTP(fileName, xmlContent);
+                await uploadFileToSFTP(fileName, xmlContent, {
+                    host: settings?.sftpHost,
+                    port: settings?.sftpPort,
+                    username: settings?.sftpUser,
+                    password: settings?.sftpPassword
+                });
                 
                 // Mark as sent in DB
                 await prisma.certificate.update({
@@ -997,6 +1011,7 @@ app.post('/api/certificates/download-xml', authenticateToken, async (req, res) =
         if (!cert) return res.status(404).json({ error: 'Not found' });
 
         const formData = JSON.parse(cert.daneKlienta);
+        const settings = await prisma.systemSettings.findUnique({ where: { id: 1 } });
         const xmlData: XMLData = {
             ...formData,
             numerCertyfikatu: cert.numerCertyfikatu,
@@ -1004,7 +1019,8 @@ app.post('/api/certificates/download-xml', authenticateToken, async (req, res) =
             dataZakonczenia: formData.dataDo,
             wariant: formData.opcjaUbez,
             dataPierwszejRejestracji: formData.pojazdDataRejestracji,
-            pojazdVIN: formData.pojazdVIN || 'UNKNOWN'
+            pojazdVIN: formData.pojazdVIN || 'UNKNOWN',
+            xmlPartnerId: settings?.xmlPartnerId || 'PEKAO_TA'
         };
 
         const xmlContent = generateXML(xmlData);
@@ -1016,6 +1032,50 @@ app.post('/api/certificates/download-xml', authenticateToken, async (req, res) =
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to generate XML' });
+    }
+});
+
+// --- SETTINGS ROUTES ---
+app.get('/api/settings', async (req, res) => {
+    try {
+        let settings = await prisma.systemSettings.findUnique({ where: { id: 1 } });
+        if (!settings) {
+            settings = await prisma.systemSettings.create({
+                data: {
+                    id: 1,
+                    partnerName: "Pekao Leasing",
+                    partnerRegistryData: "Pekao Leasing Sp. z o.o. z siedzibą w Warszawie, ul. Żubra 1, 01-066 Warszawa, Polska, zarejestrowana w rejestrze przedsiębiorców prowadzonym przez Sąd Rejonowy dla M. St. Warszawy, XIII Wydział Gospodarczy Krajowego Rejestru Sądowego pod numerem KRS: 0000000867, REGON: 430560128, NIP: 7121016682.",
+                    xmlPartnerId: "PEKAO_TA",
+                    sftpHost: "",
+                    sftpPort: 22,
+                    sftpUser: "",
+                    sftpPassword: ""
+                }
+            });
+        }
+        res.json(settings);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch settings' });
+    }
+});
+
+app.put('/api/settings', authenticateToken, async (req, res) => {
+    try {
+        if (req.user?.role !== 'ADMIN') {
+            return res.status(403).json({ error: 'Tylko administrator może zmieniać ustawienia' });
+        }
+        
+        const { partnerName, partnerRegistryData, xmlPartnerId, sftpHost, sftpPort, sftpUser, sftpPassword } = req.body;
+        
+        const settings = await prisma.systemSettings.upsert({
+            where: { id: 1 },
+            update: { partnerName, partnerRegistryData, xmlPartnerId, sftpHost, sftpPort, sftpUser, sftpPassword },
+            create: { id: 1, partnerName, partnerRegistryData, xmlPartnerId, sftpHost, sftpPort, sftpUser, sftpPassword }
+        });
+        
+        res.json(settings);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update settings' });
     }
 });
 

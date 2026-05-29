@@ -202,9 +202,10 @@ interface DeclarationProps {
     };
     result: CalculationResult | null;
     signatureUrl?: string;
+    settings?: any;
 }
 
-export const SignedDeclarationDocument: React.FC<DeclarationProps> = ({ formData, result, signatureUrl }) => {
+export const SignedDeclarationDocument: React.FC<DeclarationProps> = ({ formData, result, signatureUrl, settings }) => {
     if (!result) return <Document><Page><Text>No Data</Text></Page></Document>;
 
     const val = (text: string) => text || "..........................";
@@ -223,7 +224,7 @@ export const SignedDeclarationDocument: React.FC<DeclarationProps> = ({ formData
                     />
                     <View style={styles.titleSection}>
                         <Text style={styles.titleMain}>Deklaracja przystąpienia do ubezpieczenia grupowego</Text>
-                        <Text style={styles.titleSub}>Truck Assistance dla Klientów Pekao Leasing</Text>
+                        <Text style={styles.titleSub}>Truck Assistance dla Klientów {settings?.partnerName || 'Pekao Leasing'}</Text>
                     </View>
                     <View style={styles.contractBox}>
                         <Text style={styles.contractLabel}>Numer Umowy</Text>
@@ -251,7 +252,7 @@ export const SignedDeclarationDocument: React.FC<DeclarationProps> = ({ formData
                     </View>
                     <View style={styles.sectionContentBox}>
                         <Text style={styles.sectionText}>
-                            Pekao Leasing Sp. z o.o. z siedzibą w Warszawie, ul. Żubra 1, 01-066 Warszawa, Polska, zarejestrowana w rejestrze przedsiębiorców prowadzonym przez Sąd Rejonowy dla M. St. Warszawy, XIII Wydział Gospodarczy Krajowego Rejestru Sądowego pod numerem KRS: 0000000867, REGON: 430560128, NIP: 7121016682.
+                            {settings?.partnerRegistryData || 'Pekao Leasing Sp. z o.o. z siedzibą w Warszawie, ul. Żubra 1, 01-066 Warszawa, Polska, zarejestrowana w rejestrze przedsiębiorców prowadzonym przez Sąd Rejonowy dla M. St. Warszawy, XIII Wydział Gospodarczy Krajowego Rejestru Sądowego pod numerem KRS: 0000000867, REGON: 430560128, NIP: 7121016682.'}
                         </Text>
                     </View>
                 </View>
@@ -259,7 +260,7 @@ export const SignedDeclarationDocument: React.FC<DeclarationProps> = ({ formData
                 {/* Partner */}
                 <View style={styles.sectionContainer}>
                     <View style={styles.sectionHeaderBox}>
-                        <Text style={styles.sectionTitle}>Partner Pekao Leasing – Korzystający w rozumieniu Umowy Finansowania</Text>
+                        <Text style={styles.sectionTitle}>Partner {settings?.partnerName || 'Pekao Leasing'} – Korzystający w rozumieniu Umowy Finansowania</Text>
                     </View>
                     <View style={styles.sectionContentBox}>
                         <View style={styles.fieldRow}>
@@ -327,7 +328,7 @@ export const SignedDeclarationDocument: React.FC<DeclarationProps> = ({ formData
                     <View style={styles.legalContentBox}>
                         <Text style={styles.legalPara}>
                             <Text style={styles.bold}>Oświadczam, </Text>
-                            że otrzymałem/otrzymałam Szczególne Warunki Ubezpieczenia Pekao Truck Assistance obowiązujących od dnia 1 czerwca 2026 r. oraz że wyrażam wolę przystąpienia do Umowy ubezpieczenia Pekao Truck Assistance w opcji ubezpieczenia zaznaczonej powyżej oraz zobowiązuję się do pokrycia kosztu składki ubezpieczeniowej.
+                            że otrzymałem/otrzymałam Szczególne Warunki Ubezpieczenia {settings?.partnerName || 'Pekao'} Truck Assistance obowiązujących od dnia 1 czerwca 2026 r. oraz że wyrażam wolę przystąpienia do Umowy ubezpieczenia {settings?.partnerName || 'Pekao'} Truck Assistance w opcji ubezpieczenia zaznaczonej powyżej oraz zobowiązuję się do pokrycia kosztu składki ubezpieczeniowej.
                         </Text>
                         <Text style={styles.legalPara}>
                             <Text style={styles.bold}>Oświadczam, </Text>
@@ -372,7 +373,7 @@ export const SignedDeclarationDocument: React.FC<DeclarationProps> = ({ formData
 
                 {/* Footer Signature */}
                 <View style={styles.footerSignature}>
-                    <Text style={styles.signatureText}>Podpis i pieczęć osoby przyjmującej w imieniu Ubezpieczającego oświadczenie od Partnera Pekao Leasing</Text>
+                    <Text style={styles.signatureText}>Podpis i pieczęć osoby przyjmującej w imieniu Ubezpieczającego oświadczenie od Partnera {settings?.partnerName || 'Pekao Leasing'}</Text>
                     <View style={styles.signatureImageContainer}>
                         {signatureUrl && (
                             <Image 

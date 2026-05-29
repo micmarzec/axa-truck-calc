@@ -69,6 +69,19 @@ model Calculation {
   user             User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   createdAt        DateTime @default(now())
   validUntil       DateTime
-  
   certificates     Certificate[]
+}
+
+model SystemSettings {
+  id                  Int    @id @default(1)
+  partnerName         String @default("Pekao Leasing")
+  partnerRegistryData String @db.Text
+  
+  xmlPartnerId        String @default("PEKAO_TA")
+  sftpHost            String @default("")
+  sftpPort            Int    @default(22)
+  sftpUser            String @default("")
+  sftpPassword        String @default("")
+  
+  insuranceName       String @default("Truck Assistance dla Klientów Pekao Leasing")
 }

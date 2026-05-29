@@ -32,6 +32,8 @@ export default function ReportsPage() {
     const [selectedIds, setSelectedIds] = useState<number[]>([]);
     const [dateFrom, setDateFrom] = useState('');
     const [dateTo, setDateTo] = useState('');
+    const [totalItems, setTotalItems] = useState(0);
+    const [settings, setSettings] = useState<any>(null);
     const dateToRef = useRef<HTMLInputElement>(null);
     const [confirmModalOpen, setConfirmModalOpen] = useState(false);
     const [pendingSftpIds, setPendingSftpIds] = useState<number[]>([]);
@@ -67,19 +69,25 @@ export default function ReportsPage() {
 
             const res = await apiFetch(`/api/certificates?${params.toString()}`);
             if (!res.ok) throw new Error('Failed to fetch');
-            const data: Certificate[] = await res.json();
-
-            const parsed = data.map(cert => {
+            const data: any = await res.json();
+            
+            const certs = data.certificates || data;
+            const parsed = certs.map((cert: Certificate) => {
                 let d = {};
                 try { d = JSON.parse(cert.daneKlienta); } catch { }
                 return { ...cert, parsedData: d };
             });
 
             setCertificates(parsed);
+            setTotalItems(data.total || 0);
         } catch (error) {
             console.error(error);
             alert('Błąd pobierania danych');
         } finally {
+            apiFetch('/api/settings')
+                .then(res => res.json())
+                .then(data => setSettings(data))
+                .catch(console.error);
             setLoading(false);
         }
     };
@@ -176,12 +184,12 @@ export default function ReportsPage() {
                 latCalkowite: formData.periodDuration ? parseInt(formData.periodDuration) / 12 : 1
             };
 
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const doc = <CertificateDocument
                 formData={formData}
                 result={result as any}
                 issuedNumber={cert.numerCertyfikatu}
                 signatureUrl={cert.user?.signatureUrl}
+                settings={settings}
             />;
 
             const blob = await pdf(doc).toBlob();

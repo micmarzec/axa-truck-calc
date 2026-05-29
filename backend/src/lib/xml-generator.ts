@@ -22,6 +22,7 @@ export interface XMLData {
     skladkaT6Z?: number;
     skladkaT10Z?: number;
     skladka?: number;
+    xmlPartnerId?: string;
 }
 
 const addYearsToDate = (dateStr: string, years: number): string => {
@@ -53,7 +54,7 @@ export function generateXML(data: XMLData): string {
     const madeYear = data.dataPierwszejRejestracji ? data.dataPierwszejRejestracji.substring(0, 4) : '';
 
     const doc = create({ version: '1.0', encoding: 'utf-8' })
-        .ele('Message', { from: 'PEKAO_TA', sent: sentDate, sequenceID: '1' })
+        .ele('Message', { from: data.xmlPartnerId || 'PEKAO_TA', sent: sentDate, sequenceID: '1' })
             .ele('contractInsurances')
                 .ele('contractInsurance', { type: 'I', num: cert1, ipa: 'PL', signDate: signDate, signTime: '' })
                     .ele('installment', { frequency: 'YEAR' }).up()

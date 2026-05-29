@@ -129,9 +129,10 @@ interface CertificateProps {
     result: CalculationResult | null;
     issuedNumber?: string;
     signatureUrl?: string;
+    settings?: any;
 }
 
-export const CertificateDocument: React.FC<CertificateProps> = ({ formData, result, issuedNumber, signatureUrl }) => {
+export const CertificateDocument: React.FC<CertificateProps> = ({ formData, result, issuedNumber, signatureUrl, settings }) => {
     if (!result) return <Document><Page><Text>No Data</Text></Page></Document>;
 
     if (!result) return <Document><Page><Text>No Data</Text></Page></Document>;
@@ -153,7 +154,7 @@ export const CertificateDocument: React.FC<CertificateProps> = ({ formData, resu
                 <View style={styles.headerSection}>
                     <View style={styles.headerText}>
                         <Text>CERTYFIKAT UBEZPIECZENIA</Text>
-                        <Text>TRUCK ASSISTANCE DLA KLIENTÓW PEKAO LEASING</Text>
+                        <Text>TRUCK ASSISTANCE DLA KLIENTÓW {settings?.partnerName?.toUpperCase() || 'PEKAO LEASING'}</Text>
                     </View>
                     <Image
                         style={styles.logoImage}
@@ -175,9 +176,7 @@ export const CertificateDocument: React.FC<CertificateProps> = ({ formData, resu
                         <View style={styles.colLabel}><Text>Ubezpieczający:</Text></View>
                         <View style={styles.colValue}>
                             <Text style={styles.multiLineValue}>
-                                Pekao Leasing Sp. z o.o.,{"\n"}
-                                Ul. Żubra 1, 01-066 Warszawa,{"\n"}
-                                KRS: 00000000867, NIP: 7121016682
+                                {settings?.partnerRegistryData || 'Pekao Leasing Sp. z o.o.,\nUl. Żubra 1, 01-066 Warszawa,\nKRS: 00000000867, NIP: 7121016682'}
                             </Text>
                         </View>
                     </View>
@@ -241,8 +240,8 @@ export const CertificateDocument: React.FC<CertificateProps> = ({ formData, resu
 
                 {/* Footer text */}
                 <View style={styles.footerSection}>
-                    <Text>Niniejszy Certyfikat stanowi potwierdzenie objęcia ochroną ubezpieczeniową Pekao Truck Assistance.</Text>
-                    <Text>Pełna informacja o ubezpieczeniu znajduje się w Szczególnych Warunkach Pekao Truck Assistance obowiązujących od dnia 1 czerwca 2026 r.</Text>
+                    <Text>Niniejszy Certyfikat stanowi potwierdzenie objęcia ochroną ubezpieczeniową {settings?.partnerName || 'Pekao'} Truck Assistance.</Text>
+                    <Text>Pełna informacja o ubezpieczeniu znajduje się w Szczególnych Warunkach {settings?.partnerName || 'Pekao'} Truck Assistance obowiązujących od dnia 1 czerwca 2026 r.</Text>
                     <Text style={{ marginTop: 5 }}>Telefoniczne Centrum Alarmowe Assistance zakładu ubezpieczeń, czynne 24 godziny na dobę, 7 dni w tygodniu:</Text>
                 </View>
 
